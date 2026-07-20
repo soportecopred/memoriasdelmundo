@@ -23,7 +23,6 @@
             color: var(--text-dark);
         }
 
-        /* Cabecera y Navegación */
         .top-header {
             background-color: var(--ucv-blue);
             color: var(--white);
@@ -35,6 +34,7 @@
         }
         .header-titles h1 { margin: 0; font-size: 1.8rem; font-weight: 700; }
         .header-titles h2 { margin: 0.2rem 0 0 0; font-size: 1rem; font-weight: 400; color: #e0e6ed; }
+        
         .main-nav {
             background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -49,7 +49,6 @@
         }
         .main-nav li a:hover, .main-nav li a.active { color: var(--ucv-blue); border-bottom: 3px solid var(--ucv-blue); }
 
-        /* Contenedor Principal (Catálogo) */
         .container {
             max-width: 1600px; margin: 2rem auto; padding: 0 2rem;
             display: grid; grid-template-columns: 300px 1fr; gap: 2rem;
@@ -73,7 +72,6 @@
 
         .codigo-ref { font-family: monospace; font-weight: 700; color: var(--ucv-blue); background: #f1f5f9; padding: 0.3rem 0.6rem; border-radius: 4px; }
         
-        /* Vista de Detalle */
         #detail-view {
             display: none; max-width: 1600px; margin: 2rem auto; padding: 0 2rem;
         }
@@ -98,7 +96,6 @@
         .detail-data-panel { padding: 2rem; overflow-y: auto; max-height: 800px; }
         .detail-data-panel h2 { margin: 0.5rem 0; color: var(--ucv-blue); font-size: 1.6rem; }
         
-        /* Tablas de la vista detallada */
         .section-title {
             background: #f1f5f9; padding: 0.5rem 1rem; margin-top: 1.5rem;
             font-size: 0.9rem; text-transform: uppercase; font-weight: 700;
@@ -136,9 +133,10 @@
             <input type="text" id="search" placeholder="Buscar..." onkeyup="applyFilters()">
         </div>
         <div class="filter-group">
+            <label for="filter-edificio">Edificio / Sector:</label>
+            <!-- Este selector se llenará automáticamente con todos los edificios de la BD -->
             <select id="filter-edificio" onchange="applyFilters()">
-                <option value="">Todos los sectores</option>
-                <option value="Aula Magna">Aula Magna</option>
+                <option value="">Todos los sectores (269 registros)</option>
             </select>
         </div>
     </aside>
@@ -158,48 +156,20 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- REGISTRO MAESTRO CON TODOS LOS DATA-ATTRIBUTES -->
+                <!-- EJEMPLOS INICIALES (Puedes añadir tus 269 registros aquí abajo) -->
                 <tr onclick="openDetail(this)" 
-                    data-codigo="1-A-1" 
-                    data-registro="001-2026"
-                    data-titulo="Planta Principal y Distribución de Butacas" 
-                    data-edificio="Aula Magna" 
-                    data-localizacion="Archivo Histórico Central, Carpeta 12"
-                    data-afectacion="Bajo"
-                    
-                    data-disciplina="Arquitectura" 
-                    data-escala="1:50" 
-                    data-escala-principal="Sí"
-                    data-soporte="Papel Albanene"
-                    data-resumen="Plano arquitectónico de la platea principal, accesos y disposición técnica de asientos."
-                    data-notas="Restaurado en 1998. Requiere manipulación con guantes."
-                    
-                    data-ano="1952"
-                    data-decada="1950s"
-                    data-fecha="1952-04-15"
-                    data-productor="Carlos Raúl Villanueva"
-                    data-fuente="Ministerio de Obras Públicas (MOP)"
-                    
-                    data-serie="Planos Originales CUC"
-                    data-subserie="Sector Centro Directivo-Cultural"
-                    data-archivos="1-E-4, 1-IM-12"
-                    data-palabras="Platea, Butacas, Acústica, Accesos"
-                    
-                    data-creado="2026-06-10"
-                    data-edicion="2026-07-20"
-                    data-estado="Revisado y Aprobado"
-                    data-imagenes="1"
-                    data-pdf="Página 1"
-                    data-tiene-imagen="Sí"
-                    data-ocr="No aplicable (Plano técnico)"
-                    
-                    data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/1-a-1.jpg">
-                    
-                    <td><span class="codigo-ref">1-A-1</span></td>
-                    <td><strong>Aula Magna</strong></td>
-                    <td>Planta Principal y Distribución...</td>
-                    <td>Arquitectura</td>
-                    <td>1952</td>
+                    data-codigo="1-A-1" data-registro="001-2026" data-titulo="Planta Principal y Distribución de Butacas" data-edificio="Aula Magna" data-localizacion="Archivo Histórico Central, Carpeta 12" data-tipo-recurso="Plano Arquitectónico" data-disciplina="Arquitectura" data-escala="1:50" data-escala-principal="Sí" data-soporte="Papel Albanene" data-resumen="Plano arquitectónico de la platea principal, accesos y disposición técnica de asientos." data-notas="Restaurado. Requiere manipulación con guantes." data-ano="1952" data-decada="1950s" data-fecha="1952-04-15" data-productor="Carlos Raúl Villanueva" data-fuente="Ministerio de Obras Públicas (MOP)" data-serie="Planos Originales CUC" data-subserie="Sector Centro Directivo-Cultural" data-archivos="1-E-4" data-palabras="Platea, Butacas, Acústica" data-creado="2026-06-10" data-edicion="2026-07-20" data-estado="Revisado" data-imagenes="1" data-pdf="Página 1" data-tiene-imagen="Sí" data-ocr="No aplicable" data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/1-a-1.jpg">
+                    <td><span class="codigo-ref">1-A-1</span></td><td><strong>Aula Magna</strong></td><td>Planta Principal y Distribución de Butacas</td><td>Arquitectura</td><td>1952</td>
+                </tr>
+
+                <tr onclick="openDetail(this)" 
+                    data-codigo="REC-01" data-registro="002-2026" data-titulo="Planta Conjunto y Accesos del Rectorado" data-edificio="Rectorado" data-localizacion="Archivo Central, Carpeta 01" data-tipo-recurso="Plano General" data-disciplina="Arquitectura" data-escala="1:100" data-escala-principal="Sí" data-soporte="Papel Albanene" data-resumen="Esquema general de volumetría y plazas conectadas." data-notas="Documento base de zona declarada." data-ano="1948" data-decada="1940s" data-fecha="1948-01-15" data-productor="Carlos Raúl Villanueva" data-fuente="MOP" data-serie="Planos Originales CUC" data-subserie="Rectorado" data-archivos="Ninguno" data-palabras="Plaza Cubierta, Reloj, Rectorado" data-creado="2026-06-12" data-edicion="2026-07-10" data-estado="Revisado" data-imagenes="1" data-pdf="Página 2" data-tiene-imagen="Sí" data-ocr="No aplicable" data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/rec-01.jpg">
+                    <td><span class="codigo-ref">REC-01</span></td><td><strong>Rectorado</strong></td><td>Planta Conjunto y Accesos del Rectorado</td><td>Arquitectura</td><td>1948</td>
+                </tr>
+
+                <tr onclick="openDetail(this)" 
+                    data-codigo="IMME-05" data-registro="003-2026" data-titulo="Cálculos de Estructura e Ingeniería IMME" data-edificio="IMME" data-localizacion="Archivo Técnico IMME" data-tipo-recurso="Plano de Cálculo" data-disciplina="Estructura" data-escala="1:20" data-escala-principal="Sí" data-soporte="Papel vegetal" data-resumen="Memorias de cálculo y diseño estructural del edificio." data-notas="Revisión de fundaciones." data-decada="1950s" data-ano="1954" data-fecha="1954-05-20" data-productor="Ingeniería CUC" data-fuente="MOP" data-serie="Estructuras" data-subserie="IMME" data-archivos="Ninguno" data-palabras="IMME, Cargas, Fundaciones" data-creado="2026-06-15" data-edicion="2026-07-18" data-estado="Revisado" data-imagenes="1" data-pdf="Página 3" data-tiene-imagen="Sí" data-ocr="Sí" data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/imme-05.jpg">
+                    <td><span class="codigo-ref">IMME-05</span></td><td><strong>IMME</strong></td><td>Cálculos de Estructura e Ingeniería IMME</td><td>Estructura</td><td>1954</td>
                 </tr>
             </tbody>
         </table>
@@ -225,7 +195,7 @@
                 <tr><th>Número de registro</th><td id="d-registro">-</td></tr>
                 <tr><th>Edificio / Sector</th><td id="d-edificio">-</td></tr>
                 <tr><th>Localización física</th><td id="d-localizacion">-</td></tr>
-                <tr><th>Nivel de afectación</th><td id="d-afectacion">-</td></tr>
+                <tr><th>Tipo de recurso</th><td id="d-tipo-recurso">-</td></tr>
             </table>
 
             <div class="section-title">Descripción Técnica</div>
@@ -270,6 +240,33 @@
 </div>
 
 <script>
+// Función para poblar dinámicamente el selector de edificios a partir de la tabla
+function populateBuildingFilter() {
+    let select = document.getElementById("filter-edificio");
+    let rows = document.querySelectorAll("#repo-table tbody tr");
+    let edificiosSet = new Set();
+
+    rows.forEach(row => {
+        let edificio = row.getAttribute("data-edificio");
+        if (edificio) {
+            edificiosSet.add(edificio);
+        }
+    });
+
+    // Ordenar alfabéticamente
+    let edificiosOrdenados = Array.from(edificiosSet).sort();
+
+    // Limpiar opciones existentes manteniendo la opción por defecto
+    select.innerHTML = '<option value="">Todos los sectores (' + rows.length + ' registros)</option>';
+
+    edificiosOrdenados.forEach(edificio => {
+        let option = document.createElement("option");
+        option.value = edificio;
+        option.textContent = edificio;
+        select.appendChild(option);
+    });
+}
+
 function applyFilters() {
     let search = document.getElementById("search").value.toLowerCase();
     let edificio = document.getElementById("filter-edificio").value;
@@ -293,18 +290,15 @@ function openDetail(row) {
     document.getElementById("detail-view").style.display = "block";
     let d = row.dataset;
     
-    // Asignación de datos al DOM
     document.getElementById("d-codigo").textContent = d.codigo || "-";
     document.getElementById("d-titulo").textContent = d.titulo || "-";
     
-    // Identificación
     document.getElementById("d-codigo-norm").textContent = d.codigo || "-";
     document.getElementById("d-registro").textContent = d.registro || "-";
     document.getElementById("d-edificio").textContent = d.edificio || "-";
     document.getElementById("d-localizacion").textContent = d.localizacion || "-";
-    document.getElementById("d-afectacion").textContent = d.afectacion || "-";
+    document.getElementById("d-tipo-recurso").textContent = d.tipoRecurso || "-";
     
-    // Descripción
     document.getElementById("d-disciplina").textContent = d.disciplina || "-";
     document.getElementById("d-escala").textContent = d.escala || "-";
     document.getElementById("d-escala-prin").textContent = d.escalaPrincipal || "-";
@@ -312,20 +306,17 @@ function openDetail(row) {
     document.getElementById("d-resumen").textContent = d.resumen || "-";
     document.getElementById("d-notas").textContent = d.notas || "-";
     
-    // Contexto
     document.getElementById("d-fecha").textContent = d.fecha || "-";
     document.getElementById("d-ano").textContent = d.ano || "-";
     document.getElementById("d-decada").textContent = d.decada || "-";
     document.getElementById("d-productor").textContent = d.productor || "-";
     document.getElementById("d-fuente").textContent = d.fuente || "-";
     
-    // Documental
     document.getElementById("d-serie").textContent = d.serie || "-";
     document.getElementById("d-subserie").textContent = d.subserie || "-";
     document.getElementById("d-archivos").textContent = d.archivos || "-";
     document.getElementById("d-palabras").textContent = d.palabras || "-";
     
-    // Digital
     document.getElementById("d-creado").textContent = d.creado || "-";
     document.getElementById("d-edicion").textContent = d.edicion || "-";
     document.getElementById("d-estado").textContent = d.estado || "-";
@@ -343,7 +334,10 @@ function showCatalog() {
     document.getElementById("detail-img").src = "";
 }
 
-window.onload = applyFilters;
+window.onload = function() {
+    populateBuildingFilter();
+    applyFilters();
+};
 </script>
 
 </body>
