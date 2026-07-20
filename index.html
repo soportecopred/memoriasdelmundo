@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Memoria del Mundo - Repositorio CUC</title>
     <style>
-        /* Paleta de Colores Institucionales UCV */
         :root {
             --ucv-blue: #0033a0;
             --ucv-yellow: #ffb81c;
@@ -24,7 +23,7 @@
             color: var(--text-dark);
         }
 
-        /* Cabecera Superior */
+        /* Cabecera y Navegación */
         .top-header {
             background-color: var(--ucv-blue);
             color: var(--white);
@@ -34,21 +33,8 @@
             align-items: center;
             border-bottom: 4px solid var(--ucv-yellow);
         }
-
         .header-titles h1 { margin: 0; font-size: 1.8rem; font-weight: 700; }
         .header-titles h2 { margin: 0.2rem 0 0 0; font-size: 1rem; font-weight: 400; color: #e0e6ed; }
-
-        .logos-container { display: flex; gap: 15px; align-items: center; }
-        .logo-placeholder {
-            width: 60px; height: 60px;
-            background-color: rgba(255, 255, 255, 0.1);
-            border: 1px dashed rgba(255, 255, 255, 0.5);
-            border-radius: 8px;
-            display: flex; justify-content: center; align-items: center;
-            font-size: 0.7rem; color: var(--white); text-align: center;
-        }
-
-        /* Menú de Navegación */
         .main-nav {
             background-color: var(--white);
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
@@ -59,63 +45,43 @@
         .main-nav li a {
             display: block; padding: 1rem 0; text-decoration: none;
             color: var(--text-light); font-weight: 600;
-            border-bottom: 3px solid transparent; transition: all 0.3s ease;
-            cursor: pointer;
+            border-bottom: 3px solid transparent; cursor: pointer;
         }
         .main-nav li a:hover, .main-nav li a.active { color: var(--ucv-blue); border-bottom: 3px solid var(--ucv-blue); }
 
-        /* Contenedor Principal */
+        /* Contenedor Principal (Catálogo) */
         .container {
             max-width: 1600px; margin: 2rem auto; padding: 0 2rem;
             display: grid; grid-template-columns: 300px 1fr; gap: 2rem;
-            transition: opacity 0.3s ease;
         }
-
-        /* Panel Lateral de Filtros */
         .sidebar-filters {
             background: var(--white); padding: 1.5rem; border-radius: 12px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.02); height: fit-content;
         }
-        .sidebar-filters h3 { margin-top: 0; color: var(--ucv-blue); border-bottom: 2px solid var(--bg-color); padding-bottom: 0.8rem; }
         .filter-group { margin-bottom: 1.5rem; }
         .filter-group label { display: block; font-size: 0.9rem; font-weight: 600; margin-bottom: 0.5rem; }
         .filter-group input, .filter-group select {
             width: 100%; padding: 0.75rem; border: 1px solid var(--border-color);
             border-radius: 6px; font-size: 0.95rem; box-sizing: border-box;
         }
-        .filter-group input:focus, .filter-group select:focus { outline: none; border-color: var(--ucv-blue); }
-
-        /* Área de Datos - Tabla Principal */
         .data-area { background: var(--white); border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); overflow: hidden; }
         .table-toolbar { padding: 1.5rem; border-bottom: 1px solid var(--border-color); }
         table { width: 100%; border-collapse: collapse; }
         th { background-color: #f8fafc; color: var(--text-light); font-size: 0.8rem; text-transform: uppercase; padding: 1.2rem 1.5rem; text-align: left; border-bottom: 2px solid var(--border-color); }
-        td { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; line-height: 1.5; cursor: pointer; }
-        tbody tr { transition: background-color 0.2s; }
+        td { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border-color); font-size: 0.95rem; cursor: pointer; }
         tbody tr:hover { background-color: #eef2f6; }
 
-        /* Badges */
-        .badge { padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
-        .badge-arq { background-color: #e0f2fe; color: #0284c7; }
-        .badge-est { background-color: #fef08a; color: #854d0e; }
-        .badge-ins { background-color: #dcfce7; color: #166534; }
         .codigo-ref { font-family: monospace; font-weight: 700; color: var(--ucv-blue); background: #f1f5f9; padding: 0.3rem 0.6rem; border-radius: 4px; }
-
-        /* =========================================
-           VISTA DE DETALLE (NUEVA PANTALLA)
-           ========================================= */
-        #detail-view {
-            display: none; /* Oculto por defecto */
-            max-width: 1600px; margin: 2rem auto; padding: 0 2rem;
-            animation: fadeIn 0.4s ease;
-        }
         
+        /* Vista de Detalle */
+        #detail-view {
+            display: none; max-width: 1600px; margin: 2rem auto; padding: 0 2rem;
+        }
         .btn-back {
             display: inline-flex; align-items: center; gap: 8px;
             background: var(--white); border: 1px solid var(--border-color);
             padding: 0.6rem 1.2rem; border-radius: 6px; cursor: pointer;
-            font-weight: 600; color: var(--text-dark); margin-bottom: 1.5rem;
-            transition: all 0.2s;
+            font-weight: 600; margin-bottom: 1.5rem;
         }
         .btn-back:hover { background: var(--bg-color); border-color: var(--ucv-blue); }
 
@@ -123,31 +89,27 @@
             display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
             background: var(--white); border-radius: 12px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.05); overflow: hidden;
-            min-height: 600px;
         }
-
         .detail-image-panel {
-            background: #1e293b; display: flex; justify-content: center; align-items: center;
-            padding: 2rem; position: relative;
+            background: #1e293b; display: flex; justify-content: center; align-items: center; padding: 2rem;
         }
-        .detail-image-panel img {
-            max-width: 100%; max-height: 700px; object-fit: contain;
-            border-radius: 4px; box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-        }
-
-        .detail-data-panel { padding: 3rem; overflow-y: auto; }
-        .detail-data-panel h2 { margin-top: 0; color: var(--ucv-blue); font-size: 1.8rem; margin-bottom: 0.5rem; }
+        .detail-image-panel img { max-width: 100%; max-height: 800px; object-fit: contain; border-radius: 4px; }
         
-        .detail-table { width: 100%; margin-top: 2rem; border-collapse: collapse; }
-        .detail-table th { width: 35%; background: transparent; padding: 1rem 0; border-bottom: 1px solid var(--border-color); color: var(--text-light); text-align: left; }
-        .detail-table td { padding: 1rem 0; border-bottom: 1px solid var(--border-color); font-weight: 500; cursor: default; }
-        .detail-table tr:hover { background-color: transparent; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .detail-data-panel { padding: 2rem; overflow-y: auto; max-height: 800px; }
+        .detail-data-panel h2 { margin: 0.5rem 0; color: var(--ucv-blue); font-size: 1.6rem; }
+        
+        /* Tablas de la vista detallada */
+        .section-title {
+            background: #f1f5f9; padding: 0.5rem 1rem; margin-top: 1.5rem;
+            font-size: 0.9rem; text-transform: uppercase; font-weight: 700;
+            color: var(--text-dark); border-radius: 4px;
+        }
+        .detail-table { width: 100%; border-collapse: collapse; margin-bottom: 1rem; }
+        .detail-table th { width: 40%; background: transparent; padding: 0.8rem 0; border-bottom: 1px solid var(--border-color); color: var(--text-light); text-align: left; }
+        .detail-table td { padding: 0.8rem 0; border-bottom: 1px solid var(--border-color); font-weight: 500; font-size: 0.9rem; }
 
         @media (max-width: 1024px) {
             .container, .detail-layout { grid-template-columns: 1fr; }
-            .detail-image-panel { min-height: 400px; }
         }
     </style>
 </head>
@@ -158,236 +120,229 @@
         <h2>Proyecto UNESCO - Memoria del Mundo</h2>
         <h1>Ciudad Universitaria de Caracas</h1>
     </div>
-    <div class="logos-container">
-        <div class="logo-placeholder">Logo<br>UNESCO</div>
-        <div class="logo-placeholder">Logo<br>UCV</div>
-        <div class="logo-placeholder">Logo<br>COPRED</div>
-        <div class="logo-placeholder">Logo<br>Archivo</div>
-    </div>
 </header>
 
 <nav class="main-nav">
     <ul>
-        <li><a onclick="showCatalog()" class="active" id="nav-catalog">Repositorio de Planos</a></li>
-        <li><a href="#">Exposición Virtual Villanueva</a></li>
+        <li><a onclick="showCatalog()" class="active">Repositorio de Planos</a></li>
     </ul>
 </nav>
 
-<!-- VISTA 1: CATÁLOGO PRINCIPAL -->
+<!-- VISTA 1: CATÁLOGO -->
 <div class="container" id="catalog-view">
     <aside class="sidebar-filters">
-        <h3>Filtrar Documentos</h3>
+        <h3>Filtros</h3>
         <div class="filter-group">
-            <label for="search">Búsqueda libre:</label>
-            <input type="text" id="search" placeholder="Palabra clave, plano..." onkeyup="applyFilters()">
+            <input type="text" id="search" placeholder="Buscar..." onkeyup="applyFilters()">
         </div>
         <div class="filter-group">
-            <label for="filter-edificio">Edificio / Sector:</label>
             <select id="filter-edificio" onchange="applyFilters()">
                 <option value="">Todos los sectores</option>
-                <option value="Estadio de Béisbol">Estadio de Béisbol</option>
-                <option value="Hospital Clínico Universitario">Hospital Clínico Universitario</option>
-                <option value="las Canchas de Tenis">Canchas de Tenis</option>
                 <option value="Aula Magna">Aula Magna</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label for="filter-disciplina">Disciplina Técnica:</label>
-            <select id="filter-disciplina" onchange="applyFilters()">
-                <option value="">Todas las disciplinas</option>
-                <option value="Arquitectura">Arquitectura / Paisaje</option>
-                <option value="Estructura">Estructura</option>
-                <option value="Instalaciones">Instalaciones Sanitarias/Mecánicas</option>
             </select>
         </div>
     </aside>
 
     <main class="data-area">
         <div class="table-toolbar">
-            <span style="color: var(--text-light); font-weight: 600;" id="result-count">Mostrando resultados</span>
+            <span id="result-count">Mostrando resultados</span>
         </div>
-        
-        <div style="overflow-x: auto;">
-            <table id="repo-table">
-                <thead>
-                    <tr>
-                        <th>Cód. Normalizado</th>
-                        <th>Edificio</th>
-                        <th>Título</th>
-                        <th>Disciplina</th>
-                        <th>Año</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- AULA MAGNA -->
-                    <tr onclick="openDetail(this)" data-codigo="1-A-1" data-edificio="Aula Magna" data-disciplina="Arquitectura" data-ano="1952" data-escala="1:50" data-soporte="Papel Albanene" data-titulo="Planta Principal y Distribución de Butacas" data-notas="Plano arquitectónico de la platea principal, accesos y disposición técnica de asientos. Carlos Raúl Villanueva." data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/1-a-1.jpg">
-                        <td><span class="codigo-ref">1-A-1</span></td>
-                        <td><strong>Aula Magna</strong></td>
-                        <td>Planta Principal y Distribución...</td>
-                        <td><span class="badge badge-arq">Arquitectura</span></td>
-                        <td>1952</td>
-                    </tr>
-                    <tr onclick="openDetail(this)" data-codigo="1-E-4" data-edificio="Aula Magna" data-disciplina="Estructura" data-ano="1953" data-escala="1:20" data-soporte="Papel Albanene" data-titulo="Detalle estructural del Techo y Amarres" data-notas="Cálculos de carga para los soportes y pernos de los platillos acústicos (Nubes de Calder)." data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/1-e-4.jpg">
-                        <td><span class="codigo-ref">1-E-4</span></td>
-                        <td><strong>Aula Magna</strong></td>
-                        <td>Detalle estructural del Techo...</td>
-                        <td><span class="badge badge-est">Estructura</span></td>
-                        <td>1953</td>
-                    </tr>
+        <table id="repo-table">
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Edificio / Sector</th>
+                    <th>Título</th>
+                    <th>Disciplina</th>
+                    <th>Año</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- REGISTRO MAESTRO CON TODOS LOS DATA-ATTRIBUTES -->
+                <tr onclick="openDetail(this)" 
+                    data-codigo="1-A-1" 
+                    data-registro="001-2026"
+                    data-titulo="Planta Principal y Distribución de Butacas" 
+                    data-edificio="Aula Magna" 
+                    data-localizacion="Archivo Histórico Central, Carpeta 12"
+                    data-afectacion="Bajo"
                     
-                    <!-- ESTADIO -->
-                    <tr onclick="openDetail(this)" data-codigo="2-A-1" data-edificio="Estadio de Béisbol" data-disciplina="Arquitectura" data-ano="1950" data-escala="2:40" data-soporte="Papel Albanene" data-titulo="Planta Baja" data-notas="Planta baja. Stadium Beisball. Instituto Ciudad Universitaria." data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/2-a-1.jpg">
-                        <td><span class="codigo-ref">2-A-1</span></td>
-                        <td><strong>Estadio de Béisbol</strong></td>
-                        <td>Planta Baja</td>
-                        <td><span class="badge badge-arq">Arquitectura</span></td>
-                        <td>1950</td>
-                    </tr>
-                    <tr onclick="openDetail(this)" data-codigo="2-IS-8" data-edificio="Estadio de Béisbol" data-disciplina="Instalaciones" data-ano="1951" data-escala="2:40" data-soporte="Papel Albanene" data-titulo="Drenaje Subterraneo (sepia)" data-notas="Detalle del drenaje subterráneo." data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/2-is-8.jpg">
-                        <td><span class="codigo-ref">2-IS-8</span></td>
-                        <td><strong>Estadio de Béisbol</strong></td>
-                        <td>Drenaje Subterraneo (sepia)</td>
-                        <td><span class="badge badge-ins">Instalaciones</span></td>
-                        <td>1951</td>
-                    </tr>
-
-                    <!-- HOSPITAL -->
-                    <tr onclick="openDetail(this)" data-codigo="4-2-L-2" data-edificio="Hospital Clínico Universitario" data-disciplina="Estructura" data-ano="1945" data-escala="1:20" data-soporte="Papel Albanene" data-titulo="Tabla y detalles de Columnas" data-notas="Detalle de dimensiones, columnas con estribo y zunchas. Villanueva / MOP." data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/4-2-l-2.jpg">
-                        <td><span class="codigo-ref">4-2-L-2</span></td>
-                        <td><strong>Hospital Clínico Universitario</strong></td>
-                        <td>Tabla y detalles de Columnas</td>
-                        <td><span class="badge badge-est">Estructura</span></td>
-                        <td>1945</td>
-                    </tr>
-                    <tr onclick="openDetail(this)" data-codigo="4-1-C-5" data-edificio="Hospital Clínico Universitario" data-disciplina="Arquitectura" data-ano="1943" data-escala="2:40" data-soporte="Papel Albanene" data-titulo="Fachada E; interior Este" data-notas="Plano arquitectónico de cambios generales en la fachada este. Carlos Raúl Villanueva." data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/4-1-c-5.jpg">
-                        <td><span class="codigo-ref">4-1-C-5</span></td>
-                        <td><strong>Hospital Clínico Universitario</strong></td>
-                        <td>Fachada E; interior Este</td>
-                        <td><span class="badge badge-arq">Arquitectura</span></td>
-                        <td>1943</td>
-                    </tr>
-
-                    <!-- CANCHAS -->
-                    <tr onclick="openDetail(this)" data-codigo="3-A-2" data-edificio="las Canchas de Tenis" data-disciplina="Arquitectura" data-ano="1951" data-escala="1:25" data-soporte="Papel Albanene" data-titulo="Jardines" data-notas="Plano integral de áreas verdes y paisajismo de las canchas." data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/3-a-2.jpg">
-                        <td><span class="codigo-ref">3-A-2</span></td>
-                        <td><strong>las Canchas de Tenis</strong></td>
-                        <td>Jardines</td>
-                        <td><span class="badge badge-arq">Arquitectura</span></td>
-                        <td>1951</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+                    data-disciplina="Arquitectura" 
+                    data-escala="1:50" 
+                    data-escala-principal="Sí"
+                    data-soporte="Papel Albanene"
+                    data-resumen="Plano arquitectónico de la platea principal, accesos y disposición técnica de asientos."
+                    data-notas="Restaurado en 1998. Requiere manipulación con guantes."
+                    
+                    data-ano="1952"
+                    data-decada="1950s"
+                    data-fecha="1952-04-15"
+                    data-productor="Carlos Raúl Villanueva"
+                    data-fuente="Ministerio de Obras Públicas (MOP)"
+                    
+                    data-serie="Planos Originales CUC"
+                    data-subserie="Sector Centro Directivo-Cultural"
+                    data-archivos="1-E-4, 1-IM-12"
+                    data-palabras="Platea, Butacas, Acústica, Accesos"
+                    
+                    data-creado="2026-06-10"
+                    data-edicion="2026-07-20"
+                    data-estado="Revisado y Aprobado"
+                    data-imagenes="1"
+                    data-pdf="Página 1"
+                    data-tiene-imagen="Sí"
+                    data-ocr="No aplicable (Plano técnico)"
+                    
+                    data-img="%F0%9F%8F%9B%EF%B8%8F%20Repositorio%20Maestro%20CUC/1-a-1.jpg">
+                    
+                    <td><span class="codigo-ref">1-A-1</span></td>
+                    <td><strong>Aula Magna</strong></td>
+                    <td>Planta Principal y Distribución...</td>
+                    <td>Arquitectura</td>
+                    <td>1952</td>
+                </tr>
+            </tbody>
+        </table>
     </main>
 </div>
 
-<!-- VISTA 2: PANEL DE DETALLE DEL REGISTRO -->
+<!-- VISTA 2: DETALLE -->
 <div id="detail-view">
-    <button class="btn-back" onclick="showCatalog()">
-        ← Volver al catálogo de planos
-    </button>
+    <button class="btn-back" onclick="showCatalog()">← Volver al catálogo</button>
     
     <div class="detail-layout">
-        <!-- Carrusel / Visor de Imagen -->
         <div class="detail-image-panel">
-            <img id="detail-img" src="" alt="Previsualización del plano arquitectónico">
+            <img id="detail-img" src="" alt="Plano">
         </div>
         
-        <!-- Tabla Completa de Metadatos Patrimoniales -->
         <div class="detail-data-panel">
-            <span class="codigo-ref" id="detail-codigo" style="font-size: 1.2rem;">CÓDIGO</span>
-            <h2 id="detail-titulo">Título del Plano</h2>
-            <p style="color: var(--text-light); line-height: 1.6;" id="detail-notas">Descripción de las notas técnicas.</p>
+            <span class="codigo-ref" id="d-codigo">CÓDIGO</span>
+            <h2 id="d-titulo">Título</h2>
             
+            <div class="section-title">Identificación</div>
             <table class="detail-table">
-                <tbody>
-                    <tr>
-                        <th>Edificio / Sector</th>
-                        <td id="detail-edificio">-</td>
-                    </tr>
-                    <tr>
-                        <th>Disciplina</th>
-                        <td id="detail-disciplina">-</td>
-                    </tr>
-                    <tr>
-                        <th>Año de Creación</th>
-                        <td id="detail-ano">-</td>
-                    </tr>
-                    <tr>
-                        <th>Escala Registrada</th>
-                        <td id="detail-escala">-</td>
-                    </tr>
-                    <tr>
-                        <th>Material Soporte</th>
-                        <td id="detail-soporte">-</td>
-                    </tr>
-                </tbody>
+                <tr><th>Código normalizado</th><td id="d-codigo-norm">-</td></tr>
+                <tr><th>Número de registro</th><td id="d-registro">-</td></tr>
+                <tr><th>Edificio / Sector</th><td id="d-edificio">-</td></tr>
+                <tr><th>Localización física</th><td id="d-localizacion">-</td></tr>
+                <tr><th>Nivel de afectación</th><td id="d-afectacion">-</td></tr>
+            </table>
+
+            <div class="section-title">Descripción Técnica</div>
+            <table class="detail-table">
+                <tr><th>Disciplina</th><td id="d-disciplina">-</td></tr>
+                <tr><th>Escala</th><td id="d-escala">-</td></tr>
+                <tr><th>Escala principal</th><td id="d-escala-prin">-</td></tr>
+                <tr><th>Soporte</th><td id="d-soporte">-</td></tr>
+                <tr><th>Resumen</th><td id="d-resumen">-</td></tr>
+                <tr><th>Notas</th><td id="d-notas">-</td></tr>
+            </table>
+
+            <div class="section-title">Contexto Histórico</div>
+            <table class="detail-table">
+                <tr><th>Fecha exacta</th><td id="d-fecha">-</td></tr>
+                <tr><th>Año</th><td id="d-ano">-</td></tr>
+                <tr><th>Década</th><td id="d-decada">-</td></tr>
+                <tr><th>Productor / Autor</th><td id="d-productor">-</td></tr>
+                <tr><th>Fuente Institucional</th><td id="d-fuente">-</td></tr>
+            </table>
+
+            <div class="section-title">Gestión Documental</div>
+            <table class="detail-table">
+                <tr><th>Serie Documental</th><td id="d-serie">-</td></tr>
+                <tr><th>Subserie Documental</th><td id="d-subserie">-</td></tr>
+                <tr><th>Archivos relacionados</th><td id="d-archivos">-</td></tr>
+                <tr><th>Palabras clave</th><td id="d-palabras">-</td></tr>
+            </table>
+
+            <div class="section-title">Metadatos Digitales</div>
+            <table class="detail-table">
+                <tr><th>Creado (Sistema)</th><td id="d-creado">-</td></tr>
+                <tr><th>Última edición</th><td id="d-edicion">-</td></tr>
+                <tr><th>Estado de revisión</th><td id="d-estado">-</td></tr>
+                <tr><th>Imágenes escaneadas</th><td id="d-imagenes">-</td></tr>
+                <tr><th>Página PDF</th><td id="d-pdf">-</td></tr>
+                <tr><th>Tiene imagen</th><td id="d-tiene-imagen">-</td></tr>
+                <tr><th>Texto OCR / Búsqueda</th><td id="d-ocr">-</td></tr>
             </table>
         </div>
     </div>
 </div>
 
 <script>
-// Lógica de Filtrado (Vista 1)
 function applyFilters() {
     let search = document.getElementById("search").value.toLowerCase();
     let edificio = document.getElementById("filter-edificio").value;
-    let disciplina = document.getElementById("filter-disciplina").value;
-    
     let rows = document.querySelectorAll("#repo-table tbody tr");
-    let visibleCount = 0;
+    let count = 0;
 
     rows.forEach(row => {
         let text = row.textContent.toLowerCase();
         let rEdificio = row.getAttribute("data-edificio");
-        let rDisciplina = row.getAttribute("data-disciplina");
-
-        let matchSearch = text.includes(search);
-        let matchEdificio = edificio === "" || rEdificio === edificio;
-        let matchDisciplina = disciplina === "" || rDisciplina === disciplina;
-
-        if (matchSearch && matchEdificio && matchDisciplina) {
-            row.style.display = "";
-            visibleCount++;
+        if ((text.includes(search)) && (edificio === "" || rEdificio === edificio)) {
+            row.style.display = ""; count++;
         } else {
             row.style.display = "none";
         }
     });
-    document.getElementById("result-count").textContent = `Mostrando ${visibleCount} plano(s)`;
+    document.getElementById("result-count").textContent = `Mostrando ${count} plano(s)`;
 }
 
-// Lógica para alternar entre Catálogo y Detalle
 function openDetail(row) {
-    // 1. Ocultar catálogo, mostrar detalle
     document.getElementById("catalog-view").style.display = "none";
     document.getElementById("detail-view").style.display = "block";
+    let d = row.dataset;
     
-    // 2. Extraer datos del TR clickeado
-    let dataset = row.dataset;
+    // Asignación de datos al DOM
+    document.getElementById("d-codigo").textContent = d.codigo || "-";
+    document.getElementById("d-titulo").textContent = d.titulo || "-";
     
-    // 3. Poblar la vista de detalle
-    document.getElementById("detail-codigo").textContent = dataset.codigo;
-    document.getElementById("detail-titulo").textContent = dataset.titulo;
-    document.getElementById("detail-notas").textContent = dataset.notas;
-    document.getElementById("detail-edificio").textContent = dataset.edificio;
-    document.getElementById("detail-disciplina").textContent = dataset.disciplina;
-    document.getElementById("detail-ano").textContent = dataset.ano;
-    document.getElementById("detail-escala").textContent = dataset.escala;
-    document.getElementById("detail-soporte").textContent = dataset.soporte;
+    // Identificación
+    document.getElementById("d-codigo-norm").textContent = d.codigo || "-";
+    document.getElementById("d-registro").textContent = d.registro || "-";
+    document.getElementById("d-edificio").textContent = d.edificio || "-";
+    document.getElementById("d-localizacion").textContent = d.localizacion || "-";
+    document.getElementById("d-afectacion").textContent = d.afectacion || "-";
     
-    // Cargar la imagen
-    document.getElementById("detail-img").src = dataset.img;
+    // Descripción
+    document.getElementById("d-disciplina").textContent = d.disciplina || "-";
+    document.getElementById("d-escala").textContent = d.escala || "-";
+    document.getElementById("d-escala-prin").textContent = d.escalaPrincipal || "-";
+    document.getElementById("d-soporte").textContent = d.soporte || "-";
+    document.getElementById("d-resumen").textContent = d.resumen || "-";
+    document.getElementById("d-notas").textContent = d.notas || "-";
+    
+    // Contexto
+    document.getElementById("d-fecha").textContent = d.fecha || "-";
+    document.getElementById("d-ano").textContent = d.ano || "-";
+    document.getElementById("d-decada").textContent = d.decada || "-";
+    document.getElementById("d-productor").textContent = d.productor || "-";
+    document.getElementById("d-fuente").textContent = d.fuente || "-";
+    
+    // Documental
+    document.getElementById("d-serie").textContent = d.serie || "-";
+    document.getElementById("d-subserie").textContent = d.subserie || "-";
+    document.getElementById("d-archivos").textContent = d.archivos || "-";
+    document.getElementById("d-palabras").textContent = d.palabras || "-";
+    
+    // Digital
+    document.getElementById("d-creado").textContent = d.creado || "-";
+    document.getElementById("d-edicion").textContent = d.edicion || "-";
+    document.getElementById("d-estado").textContent = d.estado || "-";
+    document.getElementById("d-imagenes").textContent = d.imagenes || "-";
+    document.getElementById("d-pdf").textContent = d.pdf || "-";
+    document.getElementById("d-tiene-imagen").textContent = d.tieneImagen || "-";
+    document.getElementById("d-ocr").textContent = d.ocr || "-";
+    
+    document.getElementById("detail-img").src = d.img || "";
 }
 
 function showCatalog() {
     document.getElementById("catalog-view").style.display = "grid";
     document.getElementById("detail-view").style.display = "none";
-    
-    // Resetear la imagen para ahorrar memoria
     document.getElementById("detail-img").src = "";
 }
 
-// Inicializar el contador al cargar
 window.onload = applyFilters;
 </script>
 
