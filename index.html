@@ -3,83 +3,631 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan de Gestión Integral - CUC / UCV</title>
+    <title>Plan de Gestión Integral y Preservación - ICU UCV / Comprehensive Management Plan - ICU UCV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #003366; /* Azul institucional */
-            --secondary-color: #d4af37; /* Dorado / Acento */
-            --bg-color: #f8f9fa;
-            --text-color: #212529;
-        }
-
-        body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2rem 1rem;
-            text-align: center;
-            border-bottom: 4px solid var(--secondary-color);
-        }
-
-        main {
-            max-width: 900px;
-            margin: 2rem auto;
-            background: white;
-            padding: 2.5rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-        }
-
-        h1 { margin: 0; font-size: 2rem; }
-        h2 { color: var(--primary-color); border-bottom: 2px solid #eee; padding-bottom: 0.5rem; margin-top: 2rem; }
+        .lang-en { display: none; }
+        .lang-es { display: block; }
+        body.english-mode .lang-es { display: none; }
+        body.english-mode .lang-en { display: block; }
         
-        ul { padding-left: 1.2rem; }
-        li { margin-bottom: 0.5rem; }
-
-        footer {
-            text-align: center;
-            padding: 1.5rem;
-            font-size: 0.9rem;
-            color: #6c757d;
+        /* Editable styling highlights */
+        [contenteditable="true"]:hover {
+            outline: 2px dashed #3b82f6;
+            outline-offset: 4px;
+            background-color: rgba(59, 130, 246, 0.03);
+            border-radius: 4px;
+        }
+        [contenteditable="true"]:focus {
+            outline: 2px solid #2563eb;
+            outline-offset: 4px;
+            background-color: white;
+        }
+        html {
+            scroll-behavior: smooth;
         }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800 font-sans leading-relaxed lang-es">
 
-    <header>
-        <h1>Plan de Gestión Integral</h1>
-        <p>Conservación y Acceso al Patrimonio Documental - CUC / UCV</p>
+    <!-- Header Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white shadow-md border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+            <div class="flex items-center space-x-3">
+                <div class="h-10 w-10 flex items-center justify-center bg-white rounded-lg p-0.5 shadow-sm border border-slate-200 overflow-hidden">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Escudo_de_la_Universidad_Central_de_Venezuela.svg" alt="UCV Logo" class="h-full w-full object-contain" onerror="this.src='https://placehold.co/40x40/1e3a8a/ffffff?text=UCV'">
+                </div>
+                <div>
+                    <span class="text-[10px] uppercase tracking-widest text-blue-600 font-bold block">UNESCO / COPRED – UCV</span>
+                    <h1 class="text-sm md:text-base font-bold text-slate-900 leading-tight">
+                        <span class="lang-es">Ciudad Universitaria de Caracas</span>
+                        <span class="lang-en">University City of Caracas</span>
+                    </h1>
+                </div>
+            </div>
+            
+            <div class="flex flex-wrap items-center gap-3">
+                <!-- Edit Mode Toggle Button -->
+                <button onclick="toggleEditMode()" id="btn-edit" class="px-3 py-1.5 text-xs font-semibold rounded bg-amber-500 text-white hover:bg-amber-600 transition shadow-sm flex items-center gap-1.5">
+                    <i class="fa-solid fa-pen-to-square"></i>
+                    <span class="lang-es">Modo Edición: <span id="edit-status">Desactivado</span></span>
+                    <span class="lang-en">Edit Mode: <span id="edit-status-en">Off</span></span>
+                </button>
+
+                <!-- Export / Download Options -->
+                <button onclick="downloadHTMLFile()" class="px-3 py-1.5 text-xs font-semibold rounded bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-sm flex items-center gap-1.5">
+                    <i class="fa-solid fa-download"></i>
+                    <span class="lang-es">Descargar HTML</span>
+                    <span class="lang-en">Download HTML</span>
+                </button>
+
+                <div class="h-5 w-px bg-slate-200"></div>
+
+                <!-- Language Selector -->
+                <div class="flex items-center space-x-1.5">
+                    <span class="text-xs text-slate-500 font-medium mr-1 hidden sm:inline">
+                        <span class="lang-es">Idioma:</span>
+                        <span class="lang-en">Language:</span>
+                    </span>
+                    <button onclick="setLanguage('es')" id="btn-es" class="px-2.5 py-1 text-xs font-semibold rounded bg-blue-600 text-white transition shadow-sm">Español</button>
+                    <button onclick="setLanguage('en')" id="btn-en" class="px-2.5 py-1 text-xs font-semibold rounded bg-slate-200 text-slate-700 hover:bg-slate-300 transition">English</button>
+                </div>
+            </div>
+        </div>
     </header>
 
-    <main>
-        <section>
-            <h2>1. Diagnóstico y Evaluación Sistemática</h2>
-            <ul>
-                <li><strong>Inventario Analítico:</strong> Registro exhaustivo y sistemático de los fondos documentales.</li>
-                <li><strong>Resiliencia Estructural:</strong> Inspección de infraestructura física e inspecciones periódicas post-eventos.</li>
-            </ul>
-        </section>
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-32 opacity-0 transition-all duration-300 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-xl flex items-center space-x-3 text-sm">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-lg"></i>
+        <span id="toast-msg">¡Cambios guardados localmente! El documento está listo.</span>
+    </div>
 
-        <section>
-            <h2>2. Medidas de Conservación Preventiva</h2>
-            <ul>
-                <li><strong>Control de Microclima:</strong> Monitoreo continuo de temperatura (18–22 °C) y humedad relativa (45–55 %).</li>
-                <li><strong>Gestión de Riesgos:</strong> Protocolos de actuación rápida ante emergencias hídricas o sísmicas.</li>
-            </ul>
-        </section>
-    </main>
+    <!-- Main Grid Layout -->
+    <div class="max-w-7xl mx-auto px-4 py-8 grid grid-cols-1 lg:grid-cols-4 gap-8">
+        
+        <!-- Table of Contents / Sidebar -->
+        <aside class="lg:col-span-1">
+            <div class="sticky top-24 bg-white p-6 rounded-xl shadow-sm border border-slate-200 space-y-6">
+                <!-- Logos Showcase in Sidebar -->
+                <div class="flex justify-center items-center space-x-3 pb-4 border-b border-slate-100">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Escudo_de_la_Universidad_Central_de_Venezuela.svg" alt="UCV" class="h-11 w-11 object-contain bg-white p-0.5 rounded border border-slate-100 shadow-sm" title="Universidad Central de Venezuela" onerror="this.src='https://placehold.co/48x48/1e3a8a/ffffff?text=UCV'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Escudo_de_la_Universidad_Central_de_Venezuela.svg" alt="COPRED" class="h-11 w-11 object-contain bg-white p-0.5 rounded border border-slate-100 shadow-sm" title="COPRED - UCV" onerror="this.src='https://placehold.co/48x48/b45309/ffffff?text=COP'">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/World_Heritage_Emblem.svg" alt="CUC Patrimonio" class="h-11 w-11 object-contain bg-white p-0.5 rounded border border-slate-100 shadow-sm" title="Ciudad Universitaria Patrimonio Mundial" onerror="this.src='https://placehold.co/48x48/b45309/ffffff?text=UNESCO'">
+                </div>
 
-    <footer>
-        <p>&copy; Universidad Central de Venezuela — COPRED</p>
+                <div>
+                    <h3 class="text-xs uppercase tracking-wider font-bold text-slate-400 mb-3">
+                        <span class="lang-es">Tabla de Contenido</span>
+                        <span class="lang-en">Table of Contents</span>
+                    </h3>
+                    <nav class="space-y-2 text-sm font-medium">
+                        <a href="#portada" class="block text-blue-600 hover:underline">
+                            <span class="lang-es">Portada Oficial</span><span class="lang-en">Official Cover</span>
+                        </a>
+                        <a href="#introduccion" class="block text-slate-600 hover:text-blue-600">
+                            <span class="lang-es">1. Introducción y Relevancia</span><span class="lang-en">1. Introduction & Relevance</span>
+                        </a>
+                        <a href="#estado-actual" class="block text-slate-600 hover:text-blue-600">
+                            <span class="lang-es">2. Estado Actual y Gestión de Riesgos</span><span class="lang-en">2. Current State & Risk Management</span>
+                        </a>
+                        <a href="#plan-gerencial" class="block text-slate-600 hover:text-blue-600">
+                            <span class="lang-es">3. Descripción del Plan Gerencial</span><span class="lang-en">3. Managerial Plan Description</span>
+                        </a>
+                        <a href="#plan-general" class="block text-slate-600 hover:text-blue-600">
+                            <span class="lang-es">4. Plan General de Preservación</span><span class="lang-en">4. General Preservation Plan</span>
+                        </a>
+                        <a href="#digitalizacion" class="block text-slate-600 hover:text-blue-600">
+                            <span class="lang-es">5. Digitalización y Preservación Digital</span><span class="lang-en">5. Digitization & Digital Preservation</span>
+                        </a>
+                        <a href="#normas-consulta" class="block text-slate-600 hover:text-blue-600">
+                            <span class="lang-es">6. Normas de Consulta y Manipulación</span><span class="lang-en">6. Handling & Consultation Rules</span>
+                        </a>
+                        <a href="#difusion" class="block text-slate-600 hover:text-blue-600">
+                            <span class="lang-es">7. Sostenibilidad, Difusión y Conclusión</span><span class="lang-en">7. Dissemination, Sustainability & Conclusion</span>
+                        </a>
+                    </nav>
+                </div>
+
+                <div class="p-3 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-800 space-y-1">
+                    <p class="font-bold flex items-center gap-1"><i class="fa-solid fa-lightbulb"></i> <span class="lang-es">Nota de Edición</span><span class="lang-en">Editing Note</span></p>
+                    <p class="lang-es">Haga clic en el botón "Modo Edición" arriba para modificar cualquier texto directamente.</p>
+                    <p class="lang-en">Click "Edit Mode" above to modify any text directly in the document.</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="lg:col-span-3 space-y-12">
+
+            <!-- Portada Section -->
+            <section id="portada" class="bg-white p-8 md:p-12 rounded-2xl shadow-sm border border-slate-200 text-center relative overflow-hidden">
+                <div class="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-blue-600 via-amber-500 to-red-600"></div>
+                
+                <!-- Official Logos Header on Cover -->
+                <div class="flex justify-center items-center space-x-6 md:space-x-10 mb-8 pt-4">
+                    <div class="flex flex-col items-center">
+                        <div class="h-20 w-20 bg-white p-1 rounded-xl shadow-md border border-slate-100 flex items-center justify-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Escudo_de_la_Universidad_Central_de_Venezuela.svg" alt="UCV Logo" class="h-full w-full object-contain" onerror="this.src='https://placehold.co/80x80/1e3a8a/ffffff?text=UCV'">
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-600 mt-2">UCV</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="h-20 w-20 bg-white p-1 rounded-xl shadow-md border border-slate-100 flex items-center justify-center relative">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Escudo_de_la_Universidad_Central_de_Venezuela.svg" alt="COPRED Logo" class="h-full w-full object-contain opacity-90" onerror="this.src='https://placehold.co/80x80/b45309/ffffff?text=COPRED'">
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-600 mt-2">COPRED</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="h-20 w-20 bg-white p-1 rounded-xl shadow-md border border-slate-100 flex items-center justify-center">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/World_Heritage_Emblem.svg" alt="Patrimonio Mundial Logo" class="h-full w-full object-contain" onerror="this.src='https://placehold.co/80x80/b45309/ffffff?text=UNESCO'">
+                        </div>
+                        <span class="text-[10px] font-bold text-slate-600 mt-2">UNESCO / CUC</span>
+                    </div>
+                </div>
+
+                <div class="max-w-2xl mx-auto space-y-6">
+                    <div class="inline-block bg-blue-50 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full">
+                        <span class="lang-es">Documento Oficial unificado UNESCO</span><span class="lang-en">Official Unified UNESCO Document</span>
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-slate-900 tracking-tight" data-editable="true">
+                        <span class="lang-es">Plan de Gestión Integral y Descripción del Plan Gerencial de Preservación, Gestión de Riesgos y Acceso al Patrimonio Documental</span>
+                        <span class="lang-en">Comprehensive Management Plan & Description of the Preservation Managerial Plan, Risk Management and Access to Documentary Heritage</span>
+                    </h1>
+                    <p class="text-xl font-medium text-slate-600" data-editable="true">
+                        <span class="lang-es">Fondo Documental Instituto Ciudad Universitaria (ICU) – UCV (1943 - 1975)</span>
+                        <span class="lang-en">ICU-UCV Documentary Collection (1943-1975)</span>
+                    </p>
+                    <div class="pt-6 border-t border-slate-100 text-sm text-slate-500 space-y-1">
+                        <p class="font-bold text-slate-700" data-editable="true">Consejo de Preservación y Desarrollo (COPRED) – UCV</p>
+                        <p data-editable="true">División de Información Patrimonial / Heritage Information Division</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 1: Introduction -->
+            <section id="introduccion" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3" data-editable="true">
+                    <span class="lang-es">1. Introducción, Importancia y Valor Universal Excepcional</span>
+                    <span class="lang-en">1. Introduction, Importance and Outstanding Universal Value</span>
+                </h2>
+                
+                <div class="space-y-4 text-slate-700">
+                    <p data-editable="true">
+                        <span class="lang-es">La Colección Instituto Ciudad Universitaria (ICU) es un invaluable acervo documental que encapsula la historia, el desarrollo y la evolución de un hito arquitectónico y urbanístico: la Ciudad Universitaria de Caracas. Este patrimonio abarca desde los planos originales, bocetos, correspondencia, fotografías, informes técnicos, registros de construcción y documentos administrativos que narran la concepción, edificación y vida de este complejo declarado Patrimonio de la Humanidad por la UNESCO.</span>
+                        <span class="lang-en">The University City Institute (ICU) Collection is an invaluable documentary collection that encapsulates the history, development, and evolution of an architectural and urban landmark: the University City of Caracas. This heritage ranges from original plans and sketches to correspondence, photographs, technical reports, construction records, and administrative documents that chronicle the conception, construction, and life of this complex, declared a World Heritage Site by UNESCO.</span>
+                    </p>
+
+                    <h3 class="text-lg font-bold text-slate-800 pt-2" data-editable="true">
+                        <span class="lang-es">Relevancia para la Región y el Mundo</span>
+                        <span class="lang-en">Relevance for the Region and the World</span>
+                    </h3>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li data-editable="true">
+                            <span class="lang-es"><strong>Génesis y Materialización:</strong> Documenta la creación de una obra maestra del urbanismo y arquitectura moderna, reflejando la visión de Carlos Raúl Villanueva.</span>
+                            <span class="lang-en"><strong>Genesis and Materialization:</strong> Documents the creation of a masterpiece of modern urbanism and architecture, reflecting Carlos Raúl Villanueva's vision.</span>
+                        </li>
+                        <li data-editable="true">
+                            <span class="lang-es"><strong>Síntesis de las Artes:</strong> Ilustra la colaboración sin precedentes entre arquitectos, ingenieros y artistas globales como Alexander Calder, Fernand Léger y Jean Arp.</span>
+                            <span class="lang-en"><strong>Synthesis of the Arts:</strong> Illustrates unprecedented collaboration between architects, engineers, and global artists such as Alexander Calder, Fernand Léger, and Jean Arp.</span>
+                        </li>
+                        <li data-editable="true">
+                            <span class="lang-es"><strong>Valor Universal Excepcional (VUE):</strong> Testimonio único de un punto de inflexión en la modernidad tropical y su impacto cultural a escala global.</span>
+                            <span class="lang-en"><strong>Outstanding Universal Value (OUV):</strong> Unique testimony of a turning point in tropical modernity and its cultural impact on a global scale.</span>
+                        </li>
+                    </ul>
+
+                    <h3 class="text-lg font-bold text-slate-800 pt-4 border-t" data-editable="true">
+                        <span class="lang-es">Criterios de Relevancia</span>
+                        <span class="lang-en">Relevance Criteria</span>
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100" data-editable="true">
+                            <h4 class="font-bold text-slate-900 mb-1">
+                                <span class="lang-es">Histórica y Cronológica (1944-1960)</span>
+                                <span class="lang-en">Historical and Chronological (1944-1960)</span>
+                            </h4>
+                            <p class="text-sm text-slate-600">
+                                <span class="lang-es">Testimonio primario del desarrollo del Movimiento Moderno en el trópico.</span>
+                                <span class="lang-en">Primary testimony of the development of the Modern Movement in the tropics.</span>
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100" data-editable="true">
+                            <h4 class="font-bold text-slate-900 mb-1">
+                                <span class="lang-es">Formato y Estilo</span>
+                                <span class="lang-en">Format and Style</span>
+                            </h4>
+                            <p class="text-sm text-slate-600">
+                                <span class="lang-es">Planos detallados y bocetos que evidencian la Síntesis de las Artes Mayores.</span>
+                                <span class="lang-en">Detailed plans and sketches evidencing the Synthesis of Major Arts.</span>
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100" data-editable="true">
+                            <h4 class="font-bold text-slate-900 mb-1">
+                                <span class="lang-es">Geográfica y Temática</span>
+                                <span class="lang-en">Geographical and Thematic</span>
+                            </h4>
+                            <p class="text-sm text-slate-600">
+                                <span class="lang-es">ADN del sitio Patrimonio Mundial; aborda principios urbanos y desafíos técnicos.</span>
+                                <span class="lang-en">DNA of the World Heritage site; addresses urban principles and technical challenges.</span>
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100" data-editable="true">
+                            <h4 class="font-bold text-slate-900 mb-1">
+                                <span class="lang-es">Unicidad e Integridad</span>
+                                <span class="lang-en">Uniqueness and Integrity</span>
+                            </h4>
+                            <p class="text-sm text-slate-600">
+                                <span class="lang-es">Colección rara, irremplazable y con alto grado de completitud institucional.</span>
+                                <span class="lang-en">Rare, irreplaceable collection with high degree of institutional completeness.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 2: Current State & Risk Management -->
+            <section id="estado-actual" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3" data-editable="true">
+                    <span class="lang-es">2. Estado Actual del Patrimonio Documental y Gestión de Riesgos</span>
+                    <span class="lang-en">2. Current State of Documentary Heritage and Risk Management</span>
+                </h2>
+                
+                <div class="space-y-4 text-slate-700">
+                    <p data-editable="true">
+                        <span class="lang-es">La colección es heterogénea y presenta desafíos de conservación complejos debido a su diversidad de formatos: miles de planos en papel vegetal, papel de dibujo y tela; documentos administrativos y correspondencia histórica; y un vasto archivo fotográfico en blanco y negro, negativos de nitrato, acetato y diapositivas.</span>
+                        <span class="lang-en">The collection is heterogeneous and presents complex conservation challenges due to its format diversity: thousands of plans on vellum, drawing paper, and canvas; administrative documents and historical correspondence; and a vast photographic archive of B&W prints, nitrate/acetate negatives, and slides.</span>
+                    </p>
+
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl" data-editable="true">
+                        <h4 class="font-bold text-amber-800">
+                            <span class="lang-es">Evaluación y Gestión de Riesgos Identificados</span>
+                            <span class="lang-en">Risk Assessment and Identified Risks</span>
+                        </h4>
+                        <ul class="list-disc pl-5 mt-2 space-y-1 text-sm text-amber-900">
+                            <li>
+                                <span class="lang-es">Deterioro químico continuo por acidez intrínseca del papel y películas inestables.</span>
+                                <span class="lang-en">Continuous chemical deterioration due to paper acidity and unstable films.</span>
+                            </li>
+                            <li>
+                                <span class="lang-es">Fluctuaciones climáticas extremas de Caracas (humedad y calor) que propician hongos.</span>
+                                <span class="lang-en">Extreme climatic fluctuations in Caracas (humidity and heat) promoting mold.</span>
+                            </li>
+                            <li>
+                                <span class="lang-es">Vulnerabilidad ante amenazas naturales (zona sísmica, riesgos de inundación o incendios).</span>
+                                <span class="lang-en">Vulnerability to natural threats (seismic zone, flood or fire risks).</span>
+                            </li>
+                            <li>
+                                <span class="lang-es">Rezaga en digitalización completa y estandarización avanzada de metadatos.</span>
+                                <span class="lang-en">Lag in complete digitization and advanced metadata standardization.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 3: Managerial Plan Description -->
+            <section id="plan-gerencial" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3" data-editable="true">
+                    <span class="lang-es">3. Descripción del Plan Gerencial de Preservación y Acceso</span>
+                    <span class="lang-en">3. Description of the Preservation Managerial Plan and Access</span>
+                </h2>
+                
+                <div class="space-y-4 text-slate-700">
+                    <p data-editable="true">
+                        <span class="lang-es">El componente gerencial establece directrices administrativas, asignación de recursos humanos y tecnológicos, así como protocolos de gobernanza institucional coordinados por COPRED-UCV para garantizar la sostenibilidad presupuestaria y operativa a largo plazo.</span>
+                        <span class="lang-en">The managerial component establishes administrative guidelines, allocation of human and technological resources, and institutional governance protocols coordinated by COPRED-UCV to ensure long-term budgetary and operational sustainability.</span>
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100" data-editable="true">
+                            <h4 class="font-bold text-slate-800 mb-1">
+                                <span class="lang-es">Gobernanza y Alianzas</span>
+                                <span class="lang-en">Governance and Partnerships</span>
+                            </h4>
+                            <p class="text-sm text-slate-600">
+                                <span class="lang-es">Coordinación interinstitucional con facultades de arquitectura, ingeniería y organismos internacionales asociados a la UNESCO.</span>
+                                <span class="lang-en">Inter-institutional coordination with faculties of architecture, engineering, and international bodies associated with UNESCO.</span>
+                            </p>
+                        </div>
+                        <div class="p-4 bg-slate-50 rounded-xl border border-slate-100" data-editable="true">
+                            <h4 class="font-bold text-slate-800 mb-1">
+                                <span class="lang-es">Protocolos de Acceso Público</span>
+                                <span class="lang-en">Public Access Protocols</span>
+                            </h4>
+                            <p class="text-sm text-slate-600">
+                                <span class="lang-es">Regulación estricta de consulta pública digital y física para salvaguardar los ejemplares originales más frágiles.</span>
+                                <span class="lang-en">Strict regulation of digital and physical public consultation to safeguard the most fragile original items.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 4: General Preservation Plan -->
+            <section id="plan-general" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3" data-editable="true">
+                    <span class="lang-es">4. Plan General de Preservación (Preventiva y Curativa)</span>
+                    <span class="lang-en">4. General Preservation Plan (Preventive and Curative)</span>
+                </h2>
+                
+                <div class="space-y-4 text-slate-700">
+                    <p class="font-medium text-slate-900" data-editable="true">
+                        <span class="lang-es">Objetivo General: Asegurar la estabilidad física y longevidad del acervo para su digitalización y acceso a largo plazo sin comprometer el soporte original.</span>
+                        <span class="lang-en">General Objective: Ensure the physical stability and longevity of the collection for digitization and long-term access without compromising the original support.</span>
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
+                        <div class="space-y-3" data-editable="true">
+                            <h3 class="font-bold text-slate-900 border-b pb-1">
+                                <span class="lang-es">Conservación Preventiva</span>
+                                <span class="lang-en">Preventive Conservation</span>
+                            </h3>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li>
+                                    <span class="lang-es"><strong>Control Ambiental:</strong> Temperatura entre 18°C y 22°C y humedad relativa entre 45% y 55% (valores específicos para negativos).</span>
+                                    <span class="lang-en"><strong>Environmental Control:</strong> Temperature 18°C-22°C and 45%-55% RH (specific values for negatives).</span>
+                                </li>
+                                <li>
+                                    <span class="lang-es"><strong>Iluminación:</strong> Filtrado UV estricto, uso de luces LED de baja intensidad y apagado automático en depósitos.</span>
+                                    <span class="lang-en"><strong>Lighting:</strong> Strict UV filtering, low-intensity LED lights, and auto-off in storage.</span>
+                                </li>
+                                <li>
+                                    <span class="lang-es"><strong>Almacenamiento:</strong> Estanterías metálicas con recubrimiento electrostático, cajas y carpetas libres de ácido, separación de paredes y piso (mínimo 15 cm).</span>
+                                    <span class="lang-en"><strong>Storage:</strong> Electrostatic coated metal shelves, acid-free boxes/folders, 15cm wall and floor clearance.</span>
+                                </li>
+                                <li>
+                                    <span class="lang-es"><strong>Control de Plagas (IPM):</strong> Trampas regulares, limpieza estricta y prohibición absoluta de alimentos/bebidas.</span>
+                                    <span class="lang-en"><strong>Pest Control (IPM):</strong> Regular traps, strict cleaning, and absolute food/drink ban.</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="space-y-3" data-editable="true">
+                            <h3 class="font-bold text-slate-900 border-b pb-1">
+                                <span class="lang-es">Conservación Curativa</span>
+                                <span class="lang-en">Curative Conservation</span>
+                            </h3>
+                            <ul class="list-disc pl-5 space-y-2 text-sm">
+                                <li>
+                                    <span class="lang-es"><strong>Diagnóstico y Priorización:</strong> Clasificación por nivel de deterioro, priorizando la digitalización de piezas críticas y planos dañados antes de intervenciones invasivas.</span>
+                                    <span class="lang-en"><strong>Diagnosis & Prioritization:</strong> Classification by deterioration level, prioritizing digitization of critical items and damaged plans before invasive interventions.</span>
+                                </li>
+                                <li>
+                                    <span class="lang-es"><strong>Estabilización Mecánica:</strong> Limpieza superficial cuidadosa con brochas suaves, aspiración de baja potencia y retiro de elementos nocivos (grapas y ganchos metálicos oxidados).</span>
+                                    <span class="lang-en"><strong>Mechanical Stabilization:</strong> Careful surface cleaning with soft brushes, low-power suction, and removal of harmful elements (rusty staples/clips).</span>
+                                </li>
+                                <li>
+                                    <span class="lang-es"><strong>Intervenciones Reversibles:</strong> Consolidación y reparación de rasgaduras con papel japonés y adhesivos de almidón de trigo o celulosa.</span>
+                                    <span class="lang-en"><strong>Reversible Interventions:</strong> Consolidation and tear repair with Japanese paper and wheat starch/cellulose adhesives.</span>
+                                </li>
+                                <li>
+                                    <span class="lang-es"><strong>Tratamiento de Moho:</strong> Aislamiento inmediato y limpieza en cabinas de flujo controlado con equipo de protección personal (EPP).</span>
+                                    <span class="lang-en"><strong>Mold Treatment:</strong> Immediate isolation and cleaning in controlled flow cabinets with personal protective equipment (PPE).</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 5: Digitization Plan -->
+            <section id="digitalizacion" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3" data-editable="true">
+                    <span class="lang-es">5. Digitalización y Preservación Digital</span>
+                    <span class="lang-en">5. Digitization and Digital Preservation</span>
+                </h2>
+                
+                <div class="space-y-4 text-slate-700">
+                    <p data-editable="true">
+                        <span class="lang-es">La ruta de digitalización incluye un mantenimiento previo (limpieza al seco con brochas de pelo de camello y retiro de elementos nocivos como grapas y ganchos metálicos). Se emplean escáneres de gran formato de alta resolución para garantizar copias fieles de respaldo y archivos optimizados para consulta.</span>
+                        <span class="lang-en">The digitization workflow includes prior maintenance (dry cleaning with camel-hair brushes and removal of harmful elements like staples and metal hooks). High-resolution large-format scanners are utilized to guarantee faithful backup copies and optimized consultation files.</span>
+                    </p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-sm">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2" data-editable="true">
+                            <h4 class="font-bold text-slate-900">
+                                <span class="lang-es">Formatos Maestros y Acceso</span>
+                                <span class="lang-en">Master Formats & Access</span>
+                            </h4>
+                            <p class="text-slate-600">
+                                <span class="lang-es">TIFF descompreso para respaldo permanente en servidores seguros; JPEG/PDF optimizados para acceso y consulta de usuarios.</span>
+                                <span class="lang-en">Uncompressed TIFF for permanent backup on secure servers; optimized JPEG/PDF for user access and consultation.</span>
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2" data-editable="true">
+                            <h4 class="font-bold text-slate-900">
+                                <span class="lang-es">Metadatos Estándar</span>
+                                <span class="lang-en">Standard Metadata</span>
+                            </h4>
+                            <p class="text-slate-600">
+                                <span class="lang-es">Descripción detallada (título, autor, fecha, formato original) y catalogación con vocabularios controlados de búsqueda patrimonial.</span>
+                                <span class="lang-en">Detailed description (title, author, date, original format) and cataloging with controlled heritage search vocabularies.</span>
+                            </p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 space-y-2" data-editable="true">
+                            <h4 class="font-bold text-slate-900">
+                                <span class="lang-es">Redundancia en la Nube</span>
+                                <span class="lang-en">Cloud Redundancy</span>
+                            </h4>
+                            <p class="text-slate-600">
+                                <span class="lang-es">Múltiples copias de seguridad distribuidas en servidores seguros y verificación periódica de integridad de archivos.</span>
+                                <span class="lang-en">Multiple backup copies distributed on secure servers and periodic file integrity checks.</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 6: Handling & Consultation Rules -->
+            <section id="normas-consulta" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3" data-editable="true">
+                    <span class="lang-es">6. Normas de Consulta, Manipulación y Conservación</span>
+                    <span class="lang-en">6. Rules for Consultation, Handling, and Conservation</span>
+                </h2>
+                
+                <div class="space-y-6 text-slate-700">
+                    <div class="space-y-3" data-editable="true">
+                        <h3 class="font-bold text-slate-900">
+                            <span class="lang-es">Requisitos y Directrices para Investigadores y Usuarios</span>
+                            <span class="lang-en">Requirements and Guidelines for Researchers and Users</span>
+                        </h3>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>
+                                <span class="lang-es">Obligatorio completar planilla de registro y solicitud indicando identidad y propósito investigativo.</span>
+                                <span class="lang-en">Mandatory completion of registration and request form indicating identity and research purpose.</span>
+                            </li>
+                            <li>
+                                <span class="lang-es">Acceso restringido a salas de consulta; prohibido el ingreso directo a depósitos o estanterías.</span>
+                                <span class="lang-en">Restricted access to consultation rooms; direct entry to storage areas or shelves is prohibited.</span>
+                            </li>
+                            <li>
+                                <span class="lang-es">Estudiantes de pregrado acceden exclusivamente a la plataforma y material digitalizado.</span>
+                                <span class="lang-en">Undergraduate students access exclusively the digitized platform and material.</span>
+                            </li>
+                            <li>
+                                <span class="lang-es">Uso exclusivo de lápices de grafito, papel y dispositivos electrónicos sin estuches voluminosos. Cero bolígrafos, marcadores o gomas. Lavado de manos previo obligatorio.</span>
+                                <span class="lang-en">Exclusive use of graphite pencils, paper, and electronic devices without bulky cases. Zero pens, markers, or erasers. Prior hand washing is mandatory.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="space-y-3 pt-2 border-t" data-editable="true">
+                        <h3 class="font-bold text-slate-900">
+                            <span class="lang-es">Directrices para Personal Administrativo y de Mantenimiento</span>
+                            <span class="lang-en">Guidelines for Administrative and Maintenance Staff</span>
+                        </h3>
+                        <ul class="list-disc pl-5 space-y-1 text-sm">
+                            <li>
+                                <span class="lang-es">Manipulación cuidadosa por los bordes con ambas manos; prohibido doblar, enrollar o usar clips metálicos y post-its.</span>
+                                <span class="lang-en">Careful handling by edges with both hands; folding, rolling, or using metal clips/post-its is prohibited.</span>
+                            </li>
+                            <li>
+                                <span class="lang-es">Prohibido el uso de perfumes, tabaco, vapers o consumo de alimentos/bebidas en oficinas y depósitos. Consumo de agua únicamente en dispensadores designados.</span>
+                                <span class="lang-en">Prohibition of perfumes, tobacco, vapes, or food/drink consumption in offices and storage. Water consumption only at designated dispensers.</span>
+                            </li>
+                            <li>
+                                <span class="lang-es">Mantenimiento con aspiradoras HEPA y uso mínimo de agua en mopas/paños casi secos. Prohibido el uso de cloro, desinfectantes o hidrocarburos.</span>
+                                <span class="lang-en">Maintenance using HEPA vacuums and minimum water usage with nearly dry mops/cloths. Prohibition of chlorine, disinfectants, or hydrocarbons.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Section 7: Dissemination, Sustainability and Conclusion -->
+            <section id="difusion" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 space-y-6">
+                <h2 class="text-2xl font-bold text-slate-900 border-b pb-3" data-editable="true">
+                    <span class="lang-es">7. Difusión, Sostenibilidad y Conclusión Institucional</span>
+                    <span class="lang-en">7. Dissemination, Sustainability, and Institutional Conclusion</span>
+                </h2>
+                
+                <div class="space-y-4 text-slate-700">
+                    <p data-editable="true">
+                        <span class="lang-es">La entrega del material se realiza en formatos digitales controlados (JPG en baja resolución para estudiantes; formatos de alta resolución bajo acuerdos institucionales formales para investigadores). Los préstamos de obras entre instituciones requieren aprobación explícita de COPRED y el Rectorado. El presente plan unificado consolida el compromiso de la UCV ante la UNESCO para preservar y difundir el patrimonio documental del Instituto Ciudad Universitaria con altos estándares internacionales.</span>
+                        <span class="lang-en">Material delivery is carried out in controlled digital formats (low-resolution JPG for students; high-resolution formats under formal institutional agreements for researchers). Inter-institutional loans of works require explicit approval from COPRED and the Rectorate. This unified plan consolidates UCV's commitment to UNESCO to preserve and disseminate the documentary collection of the University City Institute under high international standards.</span>
+                    </p>
+
+                    <div class="bg-blue-50 p-6 rounded-xl border border-blue-100 space-y-3" data-editable="true">
+                        <h4 class="font-bold text-blue-900">
+                            <span class="lang-es">Conclusión Institucional</span>
+                            <span class="lang-en">Institutional Conclusion</span>
+                        </h4>
+                        <p class="text-sm text-blue-800">
+                            <span class="lang-es">El Plan de Gestión Integral para la Conservación y Acceso del Patrimonio Documental de la Ciudad Universitaria de Caracas consolida el compromiso inquebrantable de la UCV con la salvaguarda de su memoria histórica. Al entrelazar la preservación rigurosa con plataformas de acceso dinámicas, se garantiza que el legado de la CUC continúe inspirando a las presentes y futuras generaciones a escala global.</span>
+                            <span class="lang-en">The Comprehensive Management Plan for the Conservation and Access to the Documentary Heritage of the University City of Caracas consolidates UCV's unwavering commitment to safeguarding its historical memory. By intertwining rigorous preservation with dynamic access platforms, it ensures that CUC's legacy continues to inspire present and future generations on a global scale.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-slate-200 mt-16 py-8 text-center text-sm text-slate-500">
+        <div class="flex justify-center items-center space-x-6 mb-4">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Escudo_de_la_Universidad_Central_de_Venezuela.svg" alt="UCV" class="h-10 w-10 object-contain" onerror="this.style.display='none'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/23/Escudo_de_la_Universidad_Central_de_Venezuela.svg" alt="COPRED" class="h-10 w-10 object-contain opacity-90" onerror="this.style.display='none'">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/22/World_Heritage_Emblem.svg" alt="Patrimonio" class="h-10 w-10 object-contain" onerror="this.style.display='none'">
+        </div>
+        <p>Consejo de Preservación y Desarrollo (COPRED) – Universidad Central de Venezuela (UCV)</p>
+        <p class="mt-1">Presentado ante la UNESCO / Submitted to UNESCO</p>
     </footer>
 
+    <!-- Interactive Scripts -->
+    <script>
+        function setLanguage(lang) {
+            const body = document.body;
+            const btnEs = document.getElementById('btn-es');
+            const btnEn = document.getElementById('btn-en');
+
+            if (lang === 'en') {
+                body.classList.add('english-mode');
+                btnEn.className = "px-2.5 py-1 text-xs font-semibold rounded bg-blue-600 text-white transition shadow-sm";
+                btnEs.className = "px-2.5 py-1 text-xs font-semibold rounded bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
+            } else {
+                body.classList.remove('english-mode');
+                btnEs.className = "px-2.5 py-1 text-xs font-semibold rounded bg-blue-600 text-white transition shadow-sm";
+                btnEn.className = "px-2.5 py-1 text-xs font-semibold rounded bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
+            }
+        }
+
+        let isEditable = false;
+        function toggleEditMode() {
+            isEditable = !isEditable;
+            const editableElements = document.querySelectorAll('[data-editable="true"]');
+            const statusEs = document.getElementById('edit-status');
+            const statusEn = document.getElementById('edit-status-en');
+            const editBtn = document.getElementById('btn-edit');
+
+            editableElements.forEach(el => {
+                el.setAttribute('contenteditable', isEditable ? 'true' : 'false');
+            });
+
+            if (isEditable) {
+                statusEs.innerText = 'Activado (Editable)';
+                statusEn.innerText = 'On (Editable)';
+                editBtn.classList.remove('bg-amber-500', 'hover:bg-amber-600');
+                editBtn.classList.add('bg-blue-600', 'hover:bg-blue-700', 'ring-2', 'ring-blue-300');
+                showToast("Modo de edición activado. Puede hacer clic en cualquier texto para modificarlo.");
+            } else {
+                statusEs.innerText = 'Desactivado';
+                statusEn.innerText = 'Off';
+                editBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700', 'ring-2', 'ring-blue-300');
+                editBtn.classList.add('bg-amber-500', 'hover:bg-amber-600');
+                showToast("Modo de edición bloqueado. Cambios guardados en memoria.");
+            }
+        }
+
+        function downloadHTMLFile() {
+            const editableElements = document.querySelectorAll('[data-editable="true"]');
+            editableElements.forEach(el => el.setAttribute('contenteditable', 'false'));
+            
+            const htmlContent = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+            const blob = new Blob([htmlContent], { type: 'text/html;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'index.html';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            showToast("¡Archivo index.html descargado con éxito!");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-msg');
+            toastMsg.innerText = message;
+            toast.classList.remove('translate-y-32', 'opacity-0');
+            setTimeout(() => {
+                toast.classList.add('translate-y-32', 'opacity-0');
+            }, 4000);
+        }
+    </script>
 </body>
 </html>
