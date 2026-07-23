@@ -2,312 +2,444 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fondo Documental ICU - UCV | Preservación y Conservación</title>
+    <title>Plan de Gestión Integral y Gerencial de Preservación, Gestión de Riesgos y Acceso - Fondo Documental ICU UCV</title>
     <style>
-        :root {
-            --primary-color: #0b2545;
-            --secondary-color: #134074;
-            --accent-color: #8da9c4;
-            --light-bg: #eef4f8;
-            --white: #ffffff;
-            --text-color: #1d2d44;
-            --border-color: #d0d7de;
+        @page {
+            size: A4;
+            margin: 15mm 12mm;
+            background-color: #f7fafc;
         }
 
-        * {
+        *, *::before, *::after {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: #f4f7f9;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            font-size: 10pt;
+            line-height: 1.5;
+            color: #2d3748;
+            margin: 0;
+            padding: 0;
+            background-color: #f7fafc;
         }
 
-        header {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 2rem 1rem;
-            text-align: center;
+        .header-banner {
+            background-color: #1a365d;
+            color: #ffffff;
+            padding: 24px 20px;
+            margin: -15mm -12mm 20px -12mm;
+            border-bottom: 4px solid #c53030;
         }
 
-        header h1 {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+        .header-banner h1 {
+            font-size: 16pt;
+            margin: 0 0 6px 0;
+            font-weight: 700;
+            line-height: 1.2;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        header p {
-            font-size: 1.1rem;
-            color: var(--accent-color);
+        .header-banner h2 {
+            font-size: 11pt;
+            margin: 0 0 4px 0;
+            font-weight: 400;
+            color: #e2e8f0;
         }
 
-        nav {
-            background-color: var(--secondary-color);
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            padding: 0.8rem;
-            position: sticky;
-            top: 0;
-            z-index: 100;
+        .header-banner .meta {
+            font-size: 9pt;
+            color: #cbd5e0;
+            margin-top: 8px;
+            font-style: italic;
         }
 
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            transition: background-color 0.3s;
+        h2.section-title {
+            font-size: 12pt;
+            color: #1a365d;
+            border-left: 4px solid #c53030;
+            padding-left: 10px;
+            margin-top: 22px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            page-break-after: avoid;
         }
 
-        nav a:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
-        }
-
-        section {
-            background-color: var(--white);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-
-        h2 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 0.5rem;
-            margin-bottom: 1.2rem;
-            font-size: 1.6rem;
-        }
-
-        h3 {
-            color: var(--secondary-color);
-            margin: 1.5rem 0 0.8rem 0;
-            font-size: 1.25rem;
+        h3.subsection-title {
+            font-size: 10.5pt;
+            color: #2c5282;
+            margin-top: 14px;
+            margin-bottom: 6px;
+            font-weight: 700;
+            page-break-after: avoid;
         }
 
         p {
-            margin-bottom: 1rem;
+            margin: 0 0 8px 0;
+            text-align: justify;
         }
 
         ul, ol {
-            margin-bottom: 1.2rem;
-            padding-left: 1.5rem;
+            margin: 0 0 10px 0;
+            padding-left: 20px;
         }
 
         li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 4px;
+            text-align: justify;
         }
 
-        .table-responsive {
-            overflow-x: auto;
-            margin-top: 1rem;
-            margin-bottom: 1.5rem;
+        .callout-box {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 10px 12px;
+            margin: 12px 0;
+            font-size: 9.5pt;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1rem;
+        .alert-box {
+            background-color: #fff5f5;
+            border-left: 4px solid #e53e3e;
+            padding: 10px 12px;
+            margin: 12px 0;
+            font-size: 9.5pt;
         }
 
-        th, td {
-            border: 1px solid var(--border-color);
-            padding: 0.75rem 1rem;
-            text-align: left;
+        .document-divider {
+            border-top: 2px dashed #cbd5e0;
+            margin: 30px 0 20px 0;
         }
 
-        th {
-            background-color: var(--light-bg);
-            color: var(--primary-color);
-            font-weight: 700;
-        }
-
-        tr:nth-child(even) {
-            background-color: #fafbfc;
-        }
-
-        footer {
-            background-color: var(--primary-color);
-            color: var(--white);
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 3rem;
-            font-size: 0.9rem;
+        .doc-header-tag {
+            background-color: #2b6cb0;
+            color: #ffffff;
+            display: inline-block;
+            padding: 4px 10px;
+            font-size: 8.5pt;
+            font-weight: bold;
+            border-radius: 3px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Gestión Integral del Fondo Documental ICU - UCV</h1>
-        <p>Consejo de Preservación y Desarrollo (COPRED) — Universidad Central de Venezuela</p>
-    </header>
-
-    <nav>
-        <a href="#vision-general">Visión General</a>
-        <a href="#preservacion">Plan de Preservación</a>
-        <a href="#conservacion">Plan de Conservación</a>
-    </nav>
-
-    <div class="container">
-
-        <!-- VISIÓN GENERAL -->
-        <section id="vision-general">
-            <h2>Visión General y Diagnóstico del Acervo Documental</h2>
-            <p>La Colección Instituto Ciudad Universitaria (ICU), resguardada bajo el marco programático de COPRED en la UCV, encapsula la historia, planificación y construcción de la Ciudad Universitaria de Caracas (1943-1975)[cite: 5, 8]. Declarada Patrimonio Mundial por la UNESCO en el año 2000, esta colección abarca desde planos originales y bocetos hasta correspondencia, fotografías e informes técnicos[cite: 5].</p>
-
-            <h3>Relevancia y Valor Universal Excepcional</h3>
-            <ul>
-                <li><strong>Síntesis de las Artes Mayores:</strong> Testimonio directo de la colaboración entre el arquitecto Carlos Raúl Villanueva y artistas internacionales como Alexander Calder, Fernand Léger y Jean Arp[cite: 5].</li>
-                <li><strong>Memoria e Identidad:</strong> Documenta la adaptación del Movimiento Moderno a un contexto tropical y sirve como el "ADN" del campus universitario[cite: 5].</li>
-                <li><strong>Recurso de Reconstrucción:</strong> Los planos e informes estructurales constituyen la base técnica primaria para los trabajos de restauración patrimonial del campus tras el evento sísmico de junio de 2026[cite: 8].</li>
-            </ul>
-
-            <h3>Diagnóstico de Soportes y Estado Actual</h3>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Tipo de Material</th>
-                            <th>Soportes y Formatos</th>
-                            <th>Riesgos y Patologías Identificadas</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Planos y Diseños</strong></td>
-                            <td>Papel vegetal, papel de dibujo, tela, cianotipos. Gran formato.</td>
-                            <td>Acidez intrínseca, dobleces, rasgaduras, manchas y amarillamiento por exposición[cite: 5, 8].</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Documentos Textuales</strong></td>
-                            <td>Cartas, memorias de cálculo, informes técnicos, contratos.</td>
-                            <td>Acidez del papel antiguo, desvanecimiento de tintas y fragilidad[cite: 5].</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Material Fotográfico</strong></td>
-                            <td>Positivos en papel, negativos (nitrato, acetato, poliéster), diapositivas.</td>
-                            <td>Decoloración, deformación, ataques fúngicos y degradación química[cite: 5].</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- PLAN DE PRESERVACIÓN -->
-        <section id="preservacion">
-            <h2>Plan de Preservación (Conservación Preventiva)</h2>
-            <p>Engloba el conjunto de medidas de conservación preventiva, control ambiental, resguardo físico y normativas operativas diseñadas para evitar el deterioro de los documentos originales y asegurar la sostenibilidad digital[cite: 5, 8].</p>
-
-            <h3>1. Control Ambiental y Almacenamiento</h3>
-            <ul>
-                <li><strong>Monitoreo Climático:</strong> Control constante de humedad relativa (HR entre 45% y 55%) y temperatura (18°C a 22°C) mediante el uso estratégico de deshumidificadores y termohigrómetros[cite: 5, 8].</li>
-                <li><strong>Aislamiento Lumínico:</strong> Reducción de radiación solar y luz UV mediante luminarias LED de baja intensidad y apagado sistemático en depósitos[cite: 5, 8].</li>
-                <li><strong>Mobiliario Estándar:</strong> Estanterías metálicas no corrosivas alejadas de paredes externas y tuberías[cite: 8]. Organización horizontal de planos en mapotecas o tubos libres de ácido y lignina[cite: 8].</li>
-            </ul>
-
-            <h3>2. Código de Normas para el Personal</h3>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Rol</th>
-                            <th>Prohibiciones Estrictas</th>
-                            <th>Protocolos Obligatorios</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Personal Administrativo</strong></td>
-                            <td>Ingreso/consumo de alimentos, caramelos, tabaco, vapes o perfumes[cite: 8]. Uso de bolígrafos, marcadores o cintas adhesivas[cite: 8].</td>
-                            <td>Uso exclusivo de lápiz de grafito[cite: 8]. Consumo de agua limitado a áreas autorizadas[cite: 8]. Inducción técnica obligatoria[cite: 8].</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Personal de Limpieza</strong></td>
-                            <td>Uso de cloro, desinfectantes, solventes o paños húmedos directos sobre el papel[cite: 8].</td>
-                            <td>Barrido suave circular o aspirado con filtros HEPA[cite: 8]. Limpieza de pisos con mopas apenas húmedas[cite: 8]. Vaciado diario de deshumidificadores[cite: 8].</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>3. Preservación Digital y Resiliencia</h3>
-            <ul>
-                <li><strong>Captura de Alta Resolución:</strong> Digitalización de planos en formato TIFF sin compresión a 600 ppi (48 bits) con escáneres planetarios de luz fría[cite: 8].</li>
-                <li><strong>Redundancia Post-Sismo:</strong> Resguardo de archivos con metadatos estandarizados (EAD y Dublin Core) en respaldos ópticos (CD) y servidores redundantes en la nube[cite: 8].</li>
-                <li><strong>Estándar ISO 16363:</strong> Alineación progresiva del repositorio digital institucional (SIGPUCV) para garantizar el acceso a largo plazo[cite: 8].</li>
-            </ul>
-        </section>
-
-        <!-- PLAN DE CONSERVACIÓN -->
-        <section id="conservacion">
-            <h2>Plan de Conservación (Intervención Curativa y Acceso)</h2>
-            <p>Abarca las acciones directas de intervención curativa sobre documentos con deterioro físico o químico, así como las normas para regular la consulta directa y la difusión de la información[cite: 5, 8].</p>
-
-            <h3>1. Conservación Curativa e Intervención Directa</h3>
-            <ul>
-                <li><strong>Evaluación y Diagnóstico:</strong> Clasificación técnica por grado de deterioro (leve, moderado, severo) para priorizar intervenciones[cite: 5, 8].</li>
-                <li><strong>Reversibilidad y Mínima Intervención:</strong> Tratamientos realizados por especialistas utilizando materiales compatibles (papel japonés, adhesivos de almidón/celulosa)[cite: 5, 8].</li>
-                <li><strong>Limpieza y Estabilización:</strong> Remoción mecánica de polvo con brochas de pelo de camello y aspiradoras de baja potencia[cite: 5, 8]. Desinfección de esporas de moho en cabinas de flujo laminar[cite: 5].</li>
-                <li><strong>Preparación para Escaneo:</strong> Aplanado y estabilización estructural de planos enrollados antes de su digitalización[cite: 5].</li>
-            </ul>
-
-            <h3>2. Normas de Consulta y Acceso Público</h3>
-            <div class="table-responsive">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Categoría de Usuario</th>
-                            <th>Nivel de Acceso Permitido</th>
-                            <th>Formato de Entrega / Condiciones</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Estudiantes de Pregrado</strong></td>
-                            <td>Acceso exclusivo a material digitalizado[cite: 5]. Restringido acceso a depósitos[cite: 5].</td>
-                            <td>Entrega en formato digital JPG de baja resolución[cite: 5]. Uso de lápiz de grafito y papel en sala[cite: 5].</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Docentes e Investigadores</strong></td>
-                            <td>Consulta digital preferente. Acceso físico restringido a originales bajo justificación[cite: 5, 8].</td>
-                            <td>Formatos de alta resolución (TIFF/PDF) según el alcance de la investigación, previa solicitud formal[cite: 5].</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Personal de Reconstrucción UCV</strong></td>
-                            <td>Acceso prioritario e inmediato a memorias de cálculo y planos estructurales[cite: 8].</td>
-                            <td>Base técnica para la restauración y evaluación patológica de las edificaciones del campus[cite: 8].</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>3. Protocolo de Manipulación en Sala de Consulta</h3>
-            <ol>
-                <li>Completar la planilla de registro de consulta e indicar el propósito de la investigación[cite: 5].</li>
-                <li>Lavado obligatorio de manos con agua y jabón antes de ingresar a la sala y manipular cualquier documento[cite: 5].</li>
-                <li>Prohibición absoluta de ingresar bolsos, carpetas, bolígrafos, comida, bebidas o usar flash fotográfico[cite: 5].</li>
-                <li>Si el documento se encuentra en un estado de deterioro crítico, se ofrecerá una alternativa digital para evitar su manipulación física[cite: 5].</li>
-            </ol>
-        </section>
-
+    <div class="header-banner">
+        <h1>Plan de Gestión Integral y Gerencial de Preservación, Gestión de Riesgos y Acceso</h1>
+        <h2>Fondo Documental ICU – UCV (1943 - 1975)</h2>
+        <div class="meta">
+            Consejo de Preservación y Desarrollo (COPRED – UCV) | División de Información Patrimonial<br>
+            Sede Casona Ibarra - Ciudad Universitaria de Caracas
+        </div>
     </div>
 
-    <footer>
-        <p>&copy; 2026 Consejo de Preservación y Desarrollo (COPRED) — Universidad Central de Venezuela</p>
-    </footer>
+    <!-- DOCUMENTO 1 -->
+    <div class="doc-header-tag">Documento 1: Plan de Conservación y Gestión Integral</div>
+
+    <p>La Colección Instituto Ciudad Universitaria (ICU) es un invaluable acervo documental que encapsula la historia, el desarrollo y la evolución de un hito arquitectónico y urbanístico: la Ciudad Universitaria de Caracas. Este patrimonio abarca desde los planos originales, bocetos, hasta la correspondencia, fotografías, informes técnicos, registros de construcción y documentos administrativos que narran la concepción, edificación y vida de este complejo declarado Patrimonio de la Humanidad por la UNESCO.</p>
+
+    <h2 class="section-title">Importancia de la Colección ICU</h2>
+    <p>Para la región de América Latina y el Caribe, y particularmente para Venezuela, la Colección ICU es de gran importancia debido a que:</p>
+    <ul>
+        <li>Documenta la génesis y materialización de la Ciudad Universitaria, considerada una de las obras maestras del urbanismo y la arquitectura moderna en el continente. Proporciona una visión sin precedentes sobre la visión de Carlos Raúl Villanueva y otros colaboradores en la integración de arte, arquitectura y funcionalidad.</li>
+        <li>La Ciudad Universitaria es un símbolo de identidad y orgullo para Venezuela. La colección preserva la memoria de este logro nacional, permitiendo a las nuevas generaciones comprender sus raíces y la magnitud de este proyecto.</li>
+        <li>Ofrece lecciones valiosas sobre planificación urbana y la creación de espacios sostenibles y funcionales, sirviendo como caso de estudio para futuros proyectos de desarrollo en el país.</li>
+        <li>Constituye una parte fundamental de la memoria colectiva venezolana, albergando las historias de estudiantes, artistas, arquitectos y trabajadores que dieron vida a este espacio.</li>
+    </ul>
+
+    <p>La relevancia de la Colección ICU trasciende las fronteras regionales, impactando a la humanidad por:</p>
+    <ul>
+        <li>Al ser parte de un sitio declarado Patrimonio de la Humanidad por la UNESCO, esta colección es un testimonio directo de la creatividad humana y un ejemplo sobresaliente de la arquitectura y el urbanismo del siglo XX. Es un recurso indispensable para el estudio del movimiento moderno a escala global.</li>
+        <li>Ilustra de manera excepcional la integración de las artes plásticas con la arquitectura, una característica distintiva de la Ciudad Universitaria. Los documentos revelan el proceso colaborativo entre arquitectos, ingenieros y artistas de talla mundial (como Alexander Calder, Fernand Léger y Jean Arp), ofreciendo una perspectiva única sobre este movimiento artístico global.</li>
+        <li>Esta Colección permite a investigadores y estudiosos de todo el mundo analizar la visión y los desafíos de la construcción de la modernidad en el trópico, ofreciendo un contrapunto a las experiencias europeas y norteamericanas.</li>
+        <li>Sirve como fuente de inspiración para arquitectos, urbanistas y diseñadores a nivel global, demostrando cómo la planificación integral y la visión a largo plazo pueden resultar en espacios que trascienden su función original para convertirse en obras de arte vivientes.</li>
+    </ul>
+
+    <p>La Colección ICU posee un Valor Universal Excepcional debido a su capacidad única para documentar un punto de inflexión en la arquitectura moderna y la integración de las artes, su conexión directa con un sitio Patrimonio de la Humanidad por la UNESCO, y su innegable contribución al conocimiento sobre la planificación urbana y la educación en el siglo XX, trascendiendo su contexto local para ofrecer una perspectiva invaluable a la historia cultural y artística de la humanidad. Su preservación y acceso son esenciales para la memoria del mundo. Este acervo documental no solo es valioso para la región, sino que su relevancia trasciende fronteras.</p>
+
+    <h2 class="section-title">Criterios de Valoración Patrimonial</h2>
+    
+    <h3 class="subsection-title">Relevancia Histórica y Cronológica (Criterio de Tiempo y Época)</h3>
+    <p>La Colección ICU es un testimonio primario e insustituible del diseño y construcción de la Ciudad Universitaria de Caracas, un proyecto que se gestó y desarrolló durante un período crucial del siglo XX (principalmente entre 1944 y 1960). Este lapso fue determinante para el Movimiento Moderno en la arquitectura y el urbanismo a escala global. La colección documenta la evolución de ideas, la planificación y la ejecución de un campus universitario integral, reflejando las aspiraciones y los avances tecnológicos y estéticos de su tiempo en un contexto tropical. Su estudio permite comprender cómo las teorías arquitectónicas modernas se adaptaron y enriquecieron en una región específica, influyendo en el desarrollo de otras ciudades y campus universitarios en América Latina.</p>
+
+    <h3 class="subsection-title">Formato y Estilo (Criterio Estético, Artístico y Arquitectónico)</h3>
+    <p>La colección es excepcionalmente rica en materiales que evidencian la "Síntesis de las Artes Mayores", un concepto central de la Ciudad Universitaria. Contiene planos detallados, bocetos artísticos, correspondencia que ilustran la colaboración sin precedentes entre el arquitecto Carlos Raúl Villanueva y artistas de renombre internacional como Alexander Calder, Fernand Léger y Jean Arp, entre otros. Estos documentos no son solo registros técnicos, sino que son testimonio directo de un proceso creativo único y de una visión artística revolucionaria que buscaba integrar el arte con el espacio arquitectónico de manera holística. La materialidad y el diseño de muchos de los documentos en sí mismos poseen un valor estético.</p>
+
+    <h3 class="subsection-title">Relevancia Geográfica (Criterio de Lugar y Espacio)</h3>
+    <p>Los documentos de la Colección ICU están intrínsecamente ligados a la Ciudad Universitaria de Caracas, un sitio ya inscrito en la Lista del Patrimonio Mundial de la UNESCO desde el año 2000. Esta colección es la memoria viva y el "ADN" de ese patrimonio físico. Revela la transformación de un paisaje tropical en un complejo urbano-arquitectónico de magnitud, y cómo esta intervención artística y funcional redefinió la relación entre la ciudad, la naturaleza y la educación superior en una región específica.</p>
+
+    <h3 class="subsection-title">Relevancia Temática (Criterio de Tema y Contenido)</h3>
+    <p>La Colección ICU aborda temas universales de gran trascendencia como lo son:</p>
+    <ul>
+        <li>Documenta la aplicación de principios arquitectónicos y urbanísticos modernos en un proyecto de gran escala.</li>
+        <li>Refleja la creación de un espacio diseñado para fomentar el conocimiento, la investigación y la expresión cultural en una universidad pública de vanguardia.</li>
+        <li>La Colección ICU contiene registros de los desafíos técnicos y las soluciones innovadoras empleadas en una de las obras de ingeniería y construcción más ambiciosas de su tiempo en América Latina.</li>
+    </ul>
+
+    <h3 class="subsection-title">Rara e Irremplazable (Criterio de Unicidad y Sustituibilidad)</h3>
+    <p>La Colección ICU es única e irremplazable. Muchos de sus documentos son originales, manuscritos, dibujos técnicos con anotaciones directas de los creadores, y fotografías inéditas que no existen en ninguna otra parte. Su pérdida o destrucción significaría la pérdida de la evidencia primaria de uno de los proyectos arquitectónicos y urbanísticos más importantes del siglo XX y de la materialización de un concepto de integración artística que influenció a futuras generaciones. El Instituto Ciudad Universitaria (ICU) fue un laboratorio de arquitectura moderna y Síntesis de las Artes que sirvió de modelo o dialogó con otros proyectos en América Latina (como la UNAM en México o Brasilia en Brasil).</p>
+
+    <h3 class="subsection-title">Integridad (Criterio de Completitud)</h3>
+    <p>La colección presenta un alto grado de integridad y completitud en relación con la historia de la Ciudad Universitaria. Abarca todas las etapas, desde la concepción hasta la construcción y la vida temprana del campus, lo que permite una comprensión holística del proyecto y su contexto.</p>
+
+    <h2 class="section-title">Estado Actual del Patrimonio Documental</h2>
+    <p>El estado actual del patrimonio documental de la Colección Instituto Ciudad Universitaria (ICU), si bien se reconoce su inmenso valor histórico, artístico y universal, los desafíos asociados a su preservación física, la gestión digital y la infraestructura existente son considerables. Desde el Consejo de Preservación y Desarrollo trabajamos todos los días para su preservación y digitalización. La Colección ICU es heterogénea y abarca una amplia variedad de formatos, lo que implica desafíos específicos de conservación para cada tipo de material:</p>
+    <ul>
+        <li><strong>Planos y Dibujos Técnicos:</strong> Miles de planos en distintos tamaños y materiales (papel vegetal, papel de dibujo, tela), algunos de gran formato, que muestran el diseño estructural, arquitectónico y paisajístico. Muchos de estos presentan dobleces, rasgaduras, manchas y amarillamiento debido a la acidez del papel y la exposición.</li>
+        <li><strong>Documentos Textuales:</strong> Papeles diversos (cartas, memorias, informes, contratos) que datan de mediados del siglo XX, muchos de ellos con la acidez intrínseca del papel antiguo, tintas que se desvanecen y fragilidad.</li>
+        <li><strong>Material Fotográfico:</strong> Un vasto archivo fotográfico que documenta la construcción y la vida del campus. Incluye positivos en papel (blanco y negro), negativos de película (nitrato de celulosa, acetato, poliéster) y diapositivas. Estos materiales son particularmente vulnerables a la decoloración, el ataque fúngico, la deformación y la degradación química.</li>
+    </ul>
+
+    <h3 class="subsection-title">Condiciones de Conservación y Riesgos Identificados</h3>
+    <ul>
+        <li>La mayoría de los documentos fueron producidos con materiales no diseñados para la conservación a largo plazo (papel ácido, tintas inestables, películas con base de nitrato o acetato). Este deterioro químico y físico es continuo.</li>
+        <li>Se realiza un control ambiental riguroso (temperatura, humedad, iluminación) en las áreas de almacenamiento ya que esto acelera la degradación. Las fluctuaciones climáticas de Caracas (alta humedad, calor) son particularmente dañinas para papel, fotografías, propiciando el crecimiento de moho, el amarillamiento y la fragilización.</li>
+        <li>Aunque se han realizado esfuerzos, gran parte de la colección aún se almacena en mobiliarios de la época. Los grandes formatos son tratados y almacenados en carpetas especiales que fueron diseñadas por el personal de almacenar.</li>
+        <li>La ubicación en una zona sísmica de Caracas, junto con la posibilidad de inundaciones (por tuberías rotas, lluvias torrenciales) o incendios, representan amenazas latentes para la colección. Los riesgos asociados a plagas (insectos, roedores) también son una preocupación constante.</li>
+        <li>Aunque se han hecho grandes esfuerzos se ha ido realizando la digitalización de la Colección ICU, solo una parte del acervo permanece aún sin digitalizar, y las digitalizaciones existentes pueden no cumplir con los estándares actuales de preservación digital a largo plazo (resolución, metadatos).</li>
+    </ul>
+
+    <h3 class="subsection-title">Grado de Organización y Descripción</h3>
+    <p>La colección posee un grado de organización variable. Algunas secciones están bien catalogadas e inventariadas, con instrumentos de descripción que facilitan la localización de documentos. Sin embargo, existen fondos pendientes de organización, identificación detallada y elaboración de metadatos completos. La falta de metadatos estandarizados o su inconsistencia en algunos registros existentes dificulta la búsqueda eficiente y el acceso a la información a nivel digital.</p>
+
+    <h2 class="section-title">Plan de Conservación Preventiva y Curativa (Patrimonio Físico)</h2>
+    <p>Este plan detalla las estrategias y acciones para mitigar el deterioro y prolongar la vida útil del patrimonio documental físico de la Colección ICU, considerando las condiciones actuales y los riesgos identificados. Se enfoca tanto en la prevención de futuros daños como en la intervención curativa sobre el deterioro ya existente.</p>
+    
+    <p><strong>Objetivo General:</strong> Asegurar la estabilidad física y la longevidad del patrimonio documental de la Colección ICU, garantizando su disponibilidad para la digitalización y el acceso a largo plazo.</p>
+
+    <h3 class="subsection-title">Conservación Preventiva: Control del Entorno y Riesgos</h3>
+    <p>Se aborda las medidas activas para crear un ambiente seguro y estable para los documentos, reduciendo los factores que causan deterioro.</p>
+    <ul>
+        <li><strong>Control Ambiental:</strong> Se implementa un sistema de monitoreo constante de temperatura y humedad relativa (HR) en todos los depósitos y áreas de almacenamiento. Se debe de mantener la temperatura entre 18°C y 22°C (64°F - 72°F) y la HR entre 45% y 55% para la mayoría de los materiales, con ajustes específicos para fotografías y audiovisuales si es posible (ej., 15-18°C y 30-40% HR para negativos fotográficos). Instalación de termohigrómetros con registro de datos. Calibración periódica.</li>
+        <li><strong>Estabilización Ambiental:</strong> Evaluar si es factible, implementar sistemas de climatización (aire acondicionado, deshumidificadores) con filtros de aire para controlar la temperatura, humedad y partículas. Uso de ventilación natural controlada y barreras físicas para reducir fluctuaciones drásticas. Asegurar un buen flujo de aire para evitar la acumulación de humedad y la proliferación de moho.</li>
+        <li><strong>Control de Iluminación:</strong> Reducción a la exposición a la luz ultravioleta (UV) e infrarroja. Instalar filtros UV en ventanas deben estar protegidas con cortinas o persianas. Utilizar iluminación de baja intensidad (ej., LED con bajo contenido UV) en áreas de depósito. Mantener las luces apagadas cuando no se acceda a los depósitos. Evitar la exposición directa a la luz solar.</li>
+        <li><strong>Almacenamiento Adecuado - Mobiliario Archivístico:</strong> Reemplazar o complementar estanterías metálicas con recubrimiento de polvo electrostático o estanterías de madera sellada (sin emisión de ácidos). Utilizar gabinetes de archivo específicos para planos de gran formato. Se debe de asegurar que los estantes no estén sobrecargados y permitan una buena circulación de aire. Evitar el contacto directo de los documentos con paredes o el suelo (al menos 15 cm de distancia). Todas las cajas, carpetas y documentos deben estar debidamente identificados con etiquetas claras y legibles, sin utilizar adhesivos directamente sobre el material original.</li>
+        <li><strong>Materiales de Guarda y Protección:</strong> Adquirir y utilizar materiales libres de ácido y con reserva alcalina (cajas de archivo, carpetas, sobres, tubos para planos). Reempaquetar los documentos de manera individual o en pequeños grupos, según el formato y fragilidad, en materiales protectores adecuados. Planos enrollados deben guardarse en tubos archivísticos. Organizar los documentos de manera que se evite el apiñamiento y se facilite su acceso sin manipulación forzada.</li>
+        <li><strong>Control de Plagas (IPM - Integrated Pest Management):</strong> Instalar trampas de insectos y roedores no tóxicas de manera regular. Mantener la limpieza general de las instalaciones, sellar grietas y aberturas que puedan servir de entrada a plagas. Inspeccionar periódicamente los documentos en busca de signos de actividad de plagas. No se permite alimentos, ni bebidas en las áreas de almacenamiento.</li>
+        <li><strong>Manejo de Desastres y Seguridad:</strong> Se debe de desarrollar un plan de emergencia que incluya: Mapeo de áreas vulnerables a inundaciones, sismos, incendios. Capacitación del personal en la respuesta inicial a desastres (ej. cómo evacuar documentos, secado de materiales mojados). Lista de personal clave y servicios de emergencia. Identificación de kits de emergencia (materiales de secado, guantes, mascarillas).</li>
+        <li><strong>Seguridad Física:</strong> Se tiene un control de acceso estricto a los depósitos. Sensores de humo/incendio. Se debe de mantener extintores adecuados (CO2 o polvo químico seco) y realizar mantenimiento periódico.</li>
+        <li><strong>Protocolos de Manipulación y Consulta:</strong> Capacitar a todo el personal que labora con la Colección ICU de técnicas correctas de manipulación de documentos frágiles. Fomentar el uso de guantes de algodón o nitrilo al manipular documentos, especialmente fotografías y materiales sensibles. Se establece áreas específicas para la consulta, con superficies limpias y planas. Se tiene prohibida la ingesta de alimentos, bebidas y el uso de objetos punzantes en las áreas de consulta. Se limita el acceso a los originales solo cuando sea estrictamente necesario.</li>
+    </ul>
+
+    <h3 class="subsection-title">Conservación Curativa: Intervención Directa</h3>
+    <p>Esta sección se refiere a las acciones directas sobre documentos que ya han sufrido deterioro, con el objetivo de estabilizarlos y prepararlos para su digitalización.</p>
+    <ul>
+        <li><strong>Diagnóstico y Evaluación:</strong> Realizar una evaluación detallada del estado de conservación de cada tipo de material (planos, fotografías, documentos en papel). Clasificar los documentos por grado de deterioro (leve, moderado, severo) para priorizar las intervenciones. Priorizar la digitalización de documentos muy frágiles o deteriorados ANTES de cualquier intervención curativa extensa, si el estado del documento lo permite, para capturar la información antes de posibles daños adicionales durante la manipulación.</li>
+        <li><strong>Intervenciones de Estabilización y Restauración:</strong> Remoción cuidadosa de polvo y suciedad con brochas suaves, aspiradoras de baja potencia y gomas de borrar especializadas. Se debe de utilizar materiales de conservación reversibles (papel japonés y adhesivos de almidón o celulosa) para reparar desgarros y rasgaduras en documentos de papel y planos.</li>
+        <li><strong>Tratamiento de Moho e Insectos:</strong> Aislar inmediatamente los documentos afectados para evitar la propagación. Limpieza mecánica de esporas de moho en un ambiente controlado (ej., cabina de flujo laminar o al aire libre en un lugar ventilado, con equipo de protección personal). En casos necesarios, injertos o reintegración de fragmentos faltantes para dar soporte estructural.</li>
+        <li><strong>Preparación para Digitalización:</strong> Muchos documentos (especialmente los planos enrollados) necesitarán ser aplanados y estabilizados previamente para una digitalización óptima. Se debe de realizar las reparaciones mínimas necesarias para que el documento pueda ser manipulado con seguridad en el escáner o cámara. Limpieza superficial para asegurar la mejor calidad de imagen digital posible.</li>
+    </ul>
+
+    <h3 class="subsection-title">Priorización y Fases de Implementación</h3>
+    <p>Dada la magnitud de la Colección ICU y los recursos limitados, este plan deberá implementarse por fases, priorizando:</p>
+    <ol>
+        <li>Documentos con Mayor Valor y/o Deterioro Crítico: Aquellos que están en mayor riesgo de pérdida.</li>
+        <li>Documentos de Alta Demanda de Consulta: Para reducir la manipulación de los originales.</li>
+        <li>Preparación para la Digitalización: Asegurar que los documentos estén en condiciones óptimas para el proceso de digitalización.</li>
+    </ol>
+    <p>Este Plan de Conservación Preventiva y Curativa debe ser liderado por profesionales de la conservación y archivística, y requiere de infraestructura, materiales y capacitación constante del personal. Es un proceso continuo y dinámico que se adaptará a las necesidades cambiantes del patrimonio documental.</p>
+
+    <h2 class="section-title">Plan de Digitalización y Preservación Digital</h2>
+    <p>La documentación a digitalizar debe pasar por un previo mantenimiento de conservación que son:</p>
+    <ul>
+        <li><strong>Limpieza al seco:</strong> se realiza con una brocha de pelo de cola de camello muy suavemente por ambos lados.</li>
+        <li><strong>Retirar material nocivo:</strong> se le hace el retiro de grapas, ganchos, adhesivos, minimizando el proceso de deterioro de la documentación a causa de estos materiales, para luego pasarlos por los equipos de digitalización para hacer una captura de imagen óptima para conservación digital.</li>
+    </ul>
+    <p>La imagen obtenida de este proceso debe ser de muy buena calidad para la reproducción a futuro de la documentación donde se mantiene los atributos de color, tamaño y contenido fiel al original en físico. Las imágenes son sometidas a procesos de resolución para tener los distintos formatos para brindar atención a los usuarios de la colección y las de gran formato para conservación digital de la colección.</p>
+
+    <h3 class="subsection-title">Metodología de Digitalización</h3>
+    <ul>
+        <li>Se utiliza escáner de gran tamaño (alta resolución).</li>
+        <li>La resolución, formato de archivo (TIFF para mantener en los archivos de respaldo, JPEG/PDF para acceso).</li>
+        <li>Procesos a través de herramientas tecnológicas, para asegurar la fidelidad y legibilidad de las imágenes digitales.</li>
+    </ul>
+
+    <h3 class="subsection-title">Creación de Metadatos y Preservación a Largo Plazo</h3>
+    <ul>
+        <li><strong>Creación de Metadatos:</strong> Descripción detallada del documento (título, autor, fecha, contenido, formato original, condiciones de acceso, etc.). La creación de vocabularios controlados para facilitar la búsqueda.</li>
+        <li><strong>Estrategias de Preservación Digital a Largo Plazo:</strong> Múltiples copias en diferentes ubicaciones para tener un almacenamiento seguro (incluyendo almacenamiento en la nube o servidores). Elección de formatos que garanticen la legibilidad futura. Planes para migrar los datos a nuevos formatos o emular software antiguo a medida que la tecnología evolucione. Se debe de realizar la verificación de la integridad de los archivos digitales.</li>
+    </ul>
+
+    <h2 class="section-title">Plan de Acceso, Difusión y Sostenibilidad</h2>
+    <ul>
+        <li><strong>Plan de Acceso y Difusión:</strong> Creación o uso de un repositorio digital accesible en línea. Definir quién puede acceder a los documentos, en qué condiciones y con qué fines (investigación, educación, público general). Implementación de un sistema de búsqueda eficiente para los usuarios.</li>
+        <li><strong>Actividades de Difusión:</strong> Creación de muestras temáticas en línea. Desarrollo de materiales didácticos basados en el patrimonio. Artículos, libros, o boletines sobre el patrimonio. Promoción y divulgación a través de plataformas digitales. Colaboración con otros registros regionales o nacionales para una mayor visibilidad.</li>
+        <li><strong>Sostenibilidad y Financiamiento:</strong> Identificación de posibles fuentes de financiamiento (fondos propios, subvenciones, patrocinios, etc.). Estimación de costos para la digitalización, conservación, almacenamiento digital y difusión. Disponibilidad de personal capacitado o planes de capacitación. Indicadores de éxito y mecanismos para evaluar la implementación del plan.</li>
+        <li><strong>Equipo de Trabajo y Alianzas:</strong> Identificación del personal responsable de la implementación del plan. Posibles colaboraciones con otras instituciones (archivos, bibliotecas, universidades, organizaciones de la sociedad civil) y expertos en conservación y digitalización.</li>
+    </ul>
+
+    <h2 class="section-title">Normas de Consulta y Manipulación (CUC ICU)</h2>
+    <p>Estas normas aplican a usuarios externos, investigadores, estudiantes y personal interno que requiera consultar la colección.</p>
+
+    <h3 class="subsection-title">Requisitos para la Consulta</h3>
+    <ul>
+        <li>Es obligatorio completar el formulario de registro de consulta, indicando nombre completo, número de identificación, institución (si aplica), datos de contacto, y el propósito específico de la consulta.</li>
+        <li>Los documentos deben solicitarse a través del personal de la sala de consulta, utilizando los formatos o sistemas establecidos para tal fin. No se permite el acceso directo a los depósitos o estanterías por parte de los usuarios.</li>
+    </ul>
+
+    <h3 class="subsection-title">Normas de consulta para el usuario</h3>
+    <ul>
+        <li>Se requiere mantener un ambiente de silencio y respeto en la sala de consulta.</li>
+        <li>El usuario accederá a las áreas destinadas a la consulta de la colección CUC-ICU provistas del material de apoyo y personal capacitado si es necesario para brindar fácil acceso a la información requerida para su solicitud. El usuario no tendrá acceso a espacios de depósitos de la colección.</li>
+        <li>El usuario realizará la consulta de la información requerida mediante catálogos digitales e impresos que contienen una breve descripción del contenido (por edificación, tema, títulos, entre otros) de la documentación como de los planos que constituyen este acervo documental.</li>
+        <li>El usuario deberá llenar una planilla de solicitud donde refleje de manera breve pero explícita la intención de la misma, además de sus datos personales y la selección de la información requerida obtenida de los catálogos o del facilitador que procese dicha solicitud.</li>
+        <li>Al llenar la planilla de solicitud deberá leer las condiciones de uso del material a solicitar que se encuentran al reverso de la planilla, y de estar de acuerdo con estas condiciones proceder a realizar la solicitud.</li>
+        <li>El usuario académico (estudiante de pregrado) solo tendrá acceso a material en digital.</li>
+        <li>Los investigadores o docentes que requieran ver el material para justificar la legitimidad de la información deberán realizar una selección previa y coordinar una nueva visita, para realizar una consulta en sala del material seleccionado, donde realizará una segunda selección del material de su interés y así terminar de formalizar la solicitud.</li>
+        <li>Solo se permiten lápices, papel o dispositivos electrónicos (sin estuche voluminoso) para la toma de notas. Queda estrictamente prohibido el uso de bolígrafos, marcadores, gomas de borrar o cualquier otro material que pueda dañar los documentos. No podrán ingresar con bolsos y carpetas.</li>
+        <li>No se permite la introducción ni el consumo de alimentos, bebidas, chicles o cualquier otro producto que pueda manchar o dañar los documentos.</li>
+        <li>La reproducción fotográfica con dispositivos personales puede estar permitida sin flash y sin contacto directo con el documento, previa autorización del personal responsable. Las reproducciones de mayor calidad o copias digitales para investigación deberán solicitarse formalmente.</li>
+        <li>El usuario antes de ingresar a la sala de consulta se deberá lavar las manos, para poder manipular la información documental en el caso que los guantes suministrados por el facilitador del archivo le impida la manipulación adecuada, el cual deberá lavarse las manos cuantas veces sea necesario, y no deberá rascarse ninguna parte de su cuerpo si no después de que se lave las manos.</li>
+        <li>No se permitirá la consulta de documentos que se encuentren en un estado de deterioro avanzado y que representen un riesgo inminente de daño adicional. En estos casos, se informará al usuario sobre el estado del documento y, si es posible, se ofrecerán alternativas de consulta (ej. copias digitalizadas, si existen).</li>
+        <li>Todo el proceso de consulta estará bajo la supervisión del personal de la sala, quienes velarán por el cumplimiento de estas normas.</li>
+        <li>Todo el personal debe conocer y seguir los protocolos establecidos para casos de emergencia (incendios, inundaciones, desastres naturales, robos). Participar en simulacros y capacitaciones regulares sobre evacuación y primeros auxilios para documentos afectados por desastres.</li>
+    </ul>
+
+    <h3 class="subsection-title">Normas para el Personal Administrativo</h3>
+    <ul>
+        <li>Estas directrices son de cumplimiento obligatorio para todo el personal que manipula la colección, incluyendo archivistas, asistentes de archivo, personal de digitalización y cualquier otra persona involucrada en el manejo de los documentos.</li>
+        <li>Antes de manipular cualquier documento, el personal deberá lavarse las manos con agua y jabón y secarlas completamente. El uso de guantes de algodón limpios puede ser recomendado para documentos muy frágiles, antiguos o sensibles a los aceites de la piel, aunque no siempre es obligatorio ya que los guantes pueden reducir la destreza y aumentar el riesgo de rasgar documentos. En caso de usarse, deben ser reemplazados con frecuencia.</li>
+        <li>Evitar el uso de ropa o accesorios que puedan engancharse o rayar los documentos.</li>
+        <li>El personal administrativo que labore en los espacios de la colección no podrá ingresar ni consumir ningún tipo de alimento a los espacios de la colección.</li>
+        <li>El consumo de chicles o caramelos está prohibido en los depósitos o lugares que resguarden la colección.</li>
+        <li>El personal que consume algún tipo de tabaco (cigarrillo) o hace uso de vapers no podrá hacerlo en ninguna de las oficinas o depósitos de la colección.</li>
+        <li>El consumo de agua debe ser habitual en el personal que labora en los espacios de la colección, ya que el ambiente es seco por el uso de los deshumidificadores que controlan la humedad en los espacios de la colección, y que puede ocasionar deshidratación. El consumo de agua debe realizarse en el lugar del dispensador, para evitar derrame en mesas o lugares de trabajo donde se comprometa la integridad de la documentación que forma parte de la colección CUC-ICU.</li>
+        <li>El personal no podrá hacer uso de marcadores, bolígrafos en el desarrollo de actividades donde requiera hacer anotaciones o listas, ya que estos pueden chorrear, derramarse o rayar por accidente causando daños a la documentación de la colección. Se prohíbe el uso de cintas adhesivas para realizar alguna intervención de reparación de algún documento perteneciente a la colección.</li>
+        <li>Está prohibido uso de perfumes por parte del personal que labora en la colección ya que estos quedan en el ambiente y aceleran el proceso de descomposición del papel que compone el acervo documental.</li>
+        <li>El personal que labora en la colección no podrá extraer o prestar ningún material perteneciente a la colección sin pasar por los canales regulares de préstamo debidamente.</li>
+        <li>El personal que labore en la colección debe tener ciertos criterios o nociones de preservación y conservación de documentación en papel y del trato de documentos históricos.</li>
+        <li>Al realizar actividades en los espacios que se encuentra la colección, se debe hacer uso de las luces de forma muy precisa, y al retirarse de los espacios asegurarse de dejarlas apagadas.</li>
+        <li>El personal que va a laborar en la colección debe tener ciertos conocimientos de preservación y conservación de documentación y de no tener conocimiento recibir una formación inductiva.</li>
+        <li>Se debe de sostener los documentos por los bordes y con ambas manos cuando sea posible. Evitar tocar las áreas con texto, ilustraciones o sellos.</li>
+        <li>Nunca se debe de doblar, enrollar, arrastrar o forzar documentos para su almacenamiento o consulta. Si un documento está enrollado, debe ser desenrollado por un conservador.</li>
+        <li>No se permite utilizar clips metálicos, gomas elásticas, post-it adhesivos, grapas o cualquier otro elemento que pueda dejar marcas, dañar el papel o acelerar su deterioro. Utilizar sujetapapeles de plástico sin ácido o tiras de papel sin ácido si es necesario marcar una página temporalmente.</li>
+    </ul>
+
+    <h3 class="subsection-title">Normas para el Personal de Mantenimiento o Limpieza</h3>
+    <ul>
+        <li>El personal de mantenimiento que labore en el archivo debe recibir una previa capacitación para desempeñar sus actividades de limpieza en los espacios donde se encuentra el acervo histórico.</li>
+        <li>Mantener las salas de consulta y depósitos limpios, libres de polvo y suciedad. Realizar limpiezas periódicas con aspiradoras con filtros HEPA.</li>
+        <li>En los espacios de la colección se prohíbe el uso de desinfectantes, cloro, combustibles o diluyentes o algún otro hidrocarburo, ya que los gases que desprenden estos contribuyen al proceso de deterioro del papel que en su mayoría componen el archivo histórico.</li>
+        <li>La limpieza de documentos solo debe ser realizada por personal capacitado en conservación y utilizando las herramientas y técnicas adecuadas (brochas suaves, aspiradoras de baja succión). No utilizar paños húmedos ni productos químicos no especializados.</li>
+        <li>El personal de mantenimiento al barrer debe hacerlo suave y de forma circular haciendo pequeños montones que posteriormente serán recogidos con la pala, aunque lo más recomendable es el uso de aspiradora para no levantar polvo en el ambiente.</li>
+        <li>Para la limpieza de pisos y mobiliario, se realiza con mínimo de agua, con un tobo pequeño lleno hasta un cuarto de su capacidad. Se limpia con coleto o mopas pequeñas y apenas húmedas para que recoja el polvo que no pudo limpiarse al barrer o pasar la aspiradora. La limpieza del mobiliario debe ser con un paño casi seco para que atrape el polvo sin levantarlo ni dejar humedad o mojado el mobiliario a limpiar.</li>
+        <li>Al realizar la limpieza con agua se debe cambiar el agua cuantas veces sea necesario por agua limpia para no dejar el polvo atrapado por el paño y el agua pegado en los pisos y mobiliario.</li>
+        <li>Debe ser observador a la presencia de plagas (ratones, cucarachas, etc.) y participar la presencia de ellos para tomar medidas. Debe observar las paredes y retirar y cerciorarse de eliminar al pececillo de plata (gusano de polvo, lepisma saccharina), insecto que se genera en las paredes y que representa una amenaza potencial al papel.</li>
+        <li>La limpieza de contenedores de documentos de polipropileno debe hacerse con un paño húmedo casi seco, y si es el caso de cajas de cartón, cajas forradas en tela con una brocha o aspiradora con pico de cepillo.</li>
+        <li>El personal de la colección preferiblemente el de limpieza, al terminar la jornada laboral debe sacar el agua de los contenedores de los deshumidificadores extraída del ambiente para el control ambiental de la colección y apagar todos los equipos electrónicos que se encuentren en los depósitos de la colección.</li>
+        <li>Tanto el personal administrativo como el de limpieza, al realizar actividades en los depósitos de la colección deben apagar las luces apenas terminen sus actividades o se retiren hasta el siguiente día.</li>
+    </ul>
+
+    <h3 class="subsection-title">Difusión y Entrega de Material al Usuario</h3>
+    <ul>
+        <li>El material facilitado por parte de la colección CUC-ICU es de forma digital, en CDs o en pendrive (el cual debe ser nuevo) que el usuario debe proporcionar para retirar el material solicitado a la colección.</li>
+        <li>La calidad de las imágenes suministradas por la colección CUC-ICU va a depender del tipo de usuario, la magnitud o carácter de la investigación y el uso que se le va a dar a la información solicitada.</li>
+        <li>Para estudiantes de pregrado o postgrado, la entrega del material se realizará en digital en formato JPG en baja resolución de buena calidad, donde el estudiante pueda ver los datos que va a extraer de los documentos solicitados para su investigación.</li>
+        <li>Para investigadores y docentes se va a tomar en cuenta la intención y magnitud de su investigación y el uso que le va a dar al material a solicitar (publicación, reproducción de facsímil para exposición, referencial, uso de la imagen en algún libro o video etc.) donde se tomará la decisión según la necesidad del usuario a realizar entrega en formatos de alta resolución que permita la reproducción de la documentación de manera que cumpla los estándares requeridos.</li>
+        <li>La disposición del material por parte del usuario posee ciertas condiciones y compromisos que acepta antes de realizar la solicitud, dichos compromisos y condiciones están dispuestos al reverso de los distintos formatos de planilla de solicitud.</li>
+        <li>La solicitud en calidad de préstamo de obras de la colección CUC-ICU debe ser realizada entre instituciones, con un lapso de tiempo de antelación al evento donde quieren que las obras estén expuestas, donde la institución solicitante debe cumplir acuerdos, compromisos y requerimientos por parte de la colección CUC-ICU, los cuales deben ser aprobados por COPRED y el Rectorado, estas condiciones están reflejadas en la planilla de solicitud en calidad de préstamo de obras de la colección.</li>
+    </ul>
+
+    <p>El Plan de Gestión Integral para la Conservación y Acceso del Patrimonio Documental de la Ciudad Universitaria de Caracas (CUC) representa un pilar fundamental para la salvaguarda de la memoria histórica y administrativa de este invaluable sitio, declarado Patrimonio de la Humanidad por la UNESCO en el año 2000. Su implementación es crucial para garantizar que las generaciones presentes y futuras puedan acceder, estudiar y valorar el legado documental que sustenta la identidad y el desarrollo de la CUC.</p>
+
+    <p>Cabe señalar, que este plan no solo aborda la preservación física de los documentos, a través de estrategias de conservación preventiva, restauración y digitalización, sino que también enfatiza la importancia de la organización, descripción y acceso a esta colección. Al establecer normativas claras, procedimientos estandarizados y la capacitación del personal, sentándose así las bases para una gestión documental eficiente y transparente. La verdadera fortaleza de este plan radica en su visión integral, que reconoce la interconexión entre la conservación y el acceso. Un patrimonio documental bien conservado carece de sentido si no es accesible, y un acceso sin una adecuada conservación compromete su supervivencia a largo plazo. Por lo tanto, las estrategias de digitalización y la creación de plataformas de consulta son esenciales para el acceso al conocimiento y la investigación.</p>
+
+    <p>El Plan de Gestión Integral para la Conservación y Acceso del Patrimonio Documental de la CUC no es solo un conjunto de directrices técnicas; es un compromiso con la historia, la cultura y la educación. Protegiéndose así los documentos y también fortalecerá la capacidad de la Ciudad Universitaria para cumplir su misión académica y social, asegurando que su rica historia continúe inspirando y educando. La continuidad y el apoyo institucional son vitales para el éxito sostenido de este esfuerzo a corto, mediano y largo plazo.</p>
+
+    <div class="document-divider"></div>
+
+    <!-- DOCUMENTO 2 -->
+    <div class="doc-header-tag">Documento 2: Plan Gerencial Integrado de Preservación, Gestión de Riesgos y Acceso</div>
+
+    <p>El Fondo Documental del Instituto de la Ciudad Universitaria (ICU) se rige bajo el marco programático del Consejo de Preservación y Desarrollo (COPRED) de la Universidad Central de Venezuela (UCV). A pesar de operar en un contexto de limitaciones presupuestarias estructurales, la ejecución de este plan gerencial en su sede de la Casona Ibarra ha permitido la recuperación parcial de sus espacios, la implementación de normas estrictas de uso y una mayor expectativa de vida para los documentos originales, sirviendo como un servicio eficiente y completo para la puesta en valor de la colección.</p>
+
+    <p>Este plan es un pilar fundamental e indispensable para orientar de manera científica las actividades de cuidado, mantenimiento, reparación y reconstrucción del propio campus de la Ciudad Universitaria de Caracas, inscrito en la Lista de Patrimonio Mundial de la UNESCO en el año 2000.</p>
+
+    <h2 class="section-title">Ejes Técnico-Metodológicos del Plan Gerencial</h2>
+
+    <h3 class="subsection-title">1. Diagnóstico y Evaluación Sistemática del Estado Actual</h3>
+    <ul>
+        <li><strong>Actualización del Inventario Analítico:</strong> Mantenimiento de un registro exhaustivo y actualizado de todos los documentos, planos, fotografías y materiales de la colección, especificando de forma individual el tipo de soporte, dimensiones, fecha, autoría y estado de conservación.</li>
+        <li><strong>Mapeo de Patologías y Riesgos:</strong> Identificación y catalogación de los tipos de deterioro intrínsecos (acidez del papel, roturas, decoloración) y de los factores de riesgo extrínsecos ambientales (fluctuaciones térmicas y de humedad, radiación lumínica y contaminantes atmosféricos).</li>
+        <li><strong>Priorización de Intervenciones:</strong> Clasificación técnica de los documentos según su nivel de degradación física y su valor histórico-documental, estableciendo una hoja de ruta con prioridades de atención a corto, mediano y largo plazo.</li>
+        <li><strong>Resiliencia Post-Sismo:</strong> Tras el evento telúrico del 24 de junio de 2026, se activó una fase cero de evaluación patológica estructural inmediata en la Casona Ibarra. Se constató que el espacio específico del depósito demonstrated una excelente resiliencia física, manteniéndose la colección completamente a salvo, íntegra y libre de daños.</li>
+    </ul>
+
+    <h3 class="subsection-title">2. Medidas de Conservación Preventiva y Control Ambiental</h3>
+    <ul>
+        <li><strong>Control de Microclima:</strong> Monitoreo constante de la temperatura y la humedad relativa (HR) mediante el uso estratégico de deshumidificadores para mantener las condiciones estables recomendadas internacionalmente para el soporte papel (idealmente entre 18–22 °C y 45–55 % de HR).</li>
+        <li><strong>Aislamiento Lumínico y de Partículas:</strong> Protección de la colección frente a la radiación solar directa y reducción de la exposición a la luz artificial (especialmente el espectro UV) mediante luminarias de bajo nivel y apagado sistemático de salas. Control de polvo mediante limpieza regular y barreras físicas.</li>
+        <li><strong>Almacenamiento Estándar:</strong> Uso de estanterías metálicas estables, no corrosivas, alejadas de paredes exteriores y tuberías. Organización horizontal de planos de gran formato en mapotecas o enrollados en tubos de diámetro adecuado (nunca ajustados), utilizando carpetas, cajas y sobres libres de ácido y lignina.</li>
+        <li><strong>Manejo, Manipulación y Control Biológico:</strong> Uso obligatorio de guantes limpios, restricción de reproducciones mecánicas fotográficas en piezas frágiles y aplicación de un programa de Manejo Integrado de Plagas (MIP) inocuo para el papel, con especial énfasis en el monitoreo preventivo de termitas en el entorno.</li>
+    </ul>
+
+    <h3 class="subsection-title">3. Medidas de Conservación Curativa (Restauración y Estabilización)</h3>
+    <ul>
+        <li><strong>Intervención Profesional:</strong> Ejecución de tratamientos de restauración física y química realizados exclusivamente por conservadores-restauradores titulados y calificados, limitados estrictamente a procesos necesarios para la estabilización estructural de la pieza.</li>
+        <li><strong>Criterio de Reversibilidad:</strong> Aplicación de técnicas y materiales homologados internacionalmente bajo los principios de mínima intervención, compatibilidad fisicoquímica y estricta reversibilidad de los materiales aplicados sobre los documentos originales.</li>
+    </ul>
+
+    <h3 class="subsection-title">4. Digitalización y Salvaguarda Tecnológica (Acceso Universal)</h3>
+    <ul>
+        <li><strong>Preservación Digital de Alta Resolución:</strong> Creación de copias digitales master de alta calidad acompañadas de metadatos completos y precisos para su contextualización. Esto mitiga el desgaste mecánico por consulta directa de los originales y blinda la información ante pérdidas catastróficas. El plan contempla la captura digital de los planos originales (formato TIFF sin compresión, 600 ppi de resolución nativa, escala de color real de 48 bits) utilizando escáneres planetarios de luz fría para proteger el papel vegetal, calco y cianotipos históricos.</li>
+        <li><strong>Plataforma de Consulta y Gestión:</strong> Integración de los archivos digitalizados en plataformas institucionales en línea como el SIGPUCV. La gestión del repositorio técnico se alinea progresivamente con las directrices de la norma ISO 16363 para repositorios digitales confiables.</li>
+        <li><strong>Redundancia Post-Sismo (Copia Espejo):</strong> Como lección aprendida de la latencia sísmica de 2026, el plan gerencial incorporó la migración automática de los respaldos digitales. Los archivos digitales y sus metadatos (estructurados bajo la norma internacional Encoded Archival Description - EAD y Dublin Core) se están resguardando en CD y se estima solicitar presupuesto para migrar hacia servidores redundantes basados en la nube, garantizando el acceso universal y la resiliencia del patrimonio digital más allá del contenedor físico, la recuperación total del patrimonio digital ante la destrucción física del depósito primario.</li>
+    </ul>
+
+    <h3 class="subsection-title">5. Código de Normas Rigurosas para el Personal y Usuarios</h3>
+    <p>El personal que labora en las áreas del Fondo Documental ICU se rige por un estricto protocolo conductual para evitar la introducción de agentes contaminantes en el depósito:</p>
+    <ul>
+        <li><strong>Restricción de Alimentos y Químicos:</strong> Prohibición absoluta de ingresar o consumir alimentos, chicles o caramelos en los espacios de la colección. Se prohíbe el uso de cigarrillos, vapers y perfumes, ya que sus partículas en suspensión aceleran la degradación química del papel.</li>
+        <li><strong>Útiles de Trabajo:</strong> Prohibición del uso de bolígrafos, marcadores o tintas líquidas que puedan derramarse o rayar accidentalmente las piezas; se autoriza exclusivamente el uso de lápices de grafito. Se prohíbe el uso de cintas adhesivas comerciales para reparaciones provisionales.</li>
+        <li><strong>Hidratación Regulada:</strong> Dado que el uso continuo de deshumidificadores genera un ambiente seco que puede provocar la deshidratación del personal, el consumo de agua es obligatorio, pero restringido estrictamente al área del dispensador, quedando prohibido mantener vasos o botellas en las mesas de trabajo técnico.</li>
+    </ul>
+
+    <h3 class="subsection-title">6. Gestión Institucional, Alianzas y Recursos</h3>
+    <ul>
+        <li><strong>Capacitación Continua:</strong> Garantía de que todo el personal asignado posea criterios y nociones sólidas de archivística y preservación documental en papel histórico. Aquellos sin conocimientos previos pasan por una inducción técnica obligatoria antes de manipular la colección.</li>
+        <li><strong>Sostenibilidad y Sinergias:</strong> Búsqueda constante de alianzas estratégicas con instituciones nacionales e internacionales para el intercambio de conocimientos, tecnologías y mejores prácticas de conservación. Desarrollo de campañas de sensibilización pública para visibilizar el valor del Fondo ICU como un componente vital de la Memoria del Mundo.</li>
+    </ul>
+
+    <h3 class="subsection-title">7. Plan de Acceso Público y Consulta Especializada</h3>
+    <ul>
+        <li><strong>Acceso Digital Restringido y Universal:</strong> El acceso físico a los soportes de pergamino, papel tela y acuarelas originales de la Síntesis de las Artes se encuentra estrictamente limitado a investigadores calificados y restauradores del campus de la UCV, con el fin de evitar su deterioro mecánico. El acceso general se canaliza al 100% mediante el Repositorio Digital de COPRED, facilitando la consulta remota en formatos PDF optimizados para estudiantes y arquitectos a nivel global.</li>
+        <li><strong>El Archivo como Instrumento de Reconstrucción de la CUC:</strong> El plan gerencial prioriza el acceso inmediato del fondo a los ingenieros y arquitectos que actualmente ejecutan el levantamiento de daños estructurales del campus edificado de la CUC tras el sismo de junio de 2026. Los planos y memorias de cálculo estructural originales del fondo ICU sirven hoy como el único plano técnico de referencia para garantizar la autenticidad en los procesos de restauración patrimonial contemporánea.</li>
+    </ul>
+
+    <p>La recuperación parcial del espacio ocupado por El Fondo documental en su sede, la Casona Ibarra, la mejoría de las condiciones de almacenamiento, la colocación de protectores, la incorporación de personal y su entrenamiento, la implementación de normas de uso y preservación, la difusión y uso en formatos alternos, todo ello en el marco de un muy limitado acceso a recursos presupuestarios, ha significado no solo una mayor expectativa de vida de los documentos originales, sino también un servicio a los usuarios más completo y eficiente que ha generado productos que contribuyen a incrementar su difusión, estudio y puesta en valor.</p>
+
+    <p>Es, por sobre todo, indispensable para la preservación de la obra arquitectónica en sí misma, la realización de actividades tanto de cuidado, mantenimiento, reparación, reconstrucción, como la incorporación de nuevos elementos que permitan mirar con cuidado extremo, los valores originales para preservar debidamente la colección, para el disfrute de futuras generaciones, ya que representa un ejemplo por excelencia, de una forma de creación en vías de extinción.</p>
+
+    <h2 class="section-title">Anexo: Normativa Integrada para el Personal del Fondo ICU</h2>
+
+    <h3 class="subsection-title">Personal Administrativo</h3>
+    <ul>
+        <li>El personal administrativo que labora en los espacios del fondo documental no podrá ingresar, ni consumir ningún tipo de alimento a los espacios de la colección.</li>
+        <li>El consumo de chicles o caramelos está prohibido en los depósitos o lugares que resguarden la colección.</li>
+        <li>El personal que consume algún tipo de tabaco (cigarrillo) o hace uso de vapers no podrá hacerlo en ninguna de las oficinas o depósitos de la colección.</li>
+        <li>El consumo de agua debe ser habitual en el personal que labora en los espacios de la colección, ya que el ambiente es seco por el uso de los deshumidificadores que controlan la humedad en los espacios de la colección, y que puede ocasionar deshidratación. El consumo de agua debe realizarse en el lugar del dispensador, para evitar derrame en mesas o lugares de trabajo donde se comprometa la integridad de la documentación que forma parte del fondo documental ICU.</li>
+        <li>El personal no podrá hacer uso de marcadores, bolígrafos en el desarrollo de actividades donde requiera hacer anotaciones o listas, ya que estos pueden chorrear, derramarse o rayar por accidente causando daños a la documentación de la colección. Se prohíbe el uso de cintas adhesivas para realizar alguna intervención de reparación de algún documento perteneciente a la colección.</li>
+        <li>Está prohibido uso de perfumes por parte del personal que labora en El Fondo documental ya que estos quedan en el ambiente y aceleran el proceso de descomposición del papel que compone el acervo documental.</li>
+        <li>El personal que labora en El Fondo documental no podrá extraer o prestar ningún material perteneciente a la colección.</li>
+        <li>El personal que labora en El Fondo documental debe tener criterios y nociones de preservación y conservación de documentación en papel y del trato a los documentos históricos. De no tener conocimiento deberá de recibir una formación inductiva.</li>
+        <li>Al realizar actividades en los espacios que se encuentra la colección, se debe hacer uso de las luces de forma muy precisa, y al retirarse de los espacios asegurarse de dejarlas apagadas.</li>
+    </ul>
+
+    <h3 class="subsection-title">Personal de Mantenimiento o Limpieza</h3>
+    <ul>
+        <li>El personal de mantenimiento que labore en el archivo debe recibir una previa capacitación para desempeñar sus actividades de limpieza en los espacios donde se encuentra el acervo histórico.</li>
+        <li>En los espacios del fondo documental se prohíbe el uso de desinfectantes, cloro, combustibles o diluyentes o algún otro tipo líquido, ya que los gases que desprenden estos contribuyen al proceso de deterioro del papel que en su mayoría componen el archivo histórico.</li>
+        <li>El personal de mantenimiento al barrer debe hacerlo suave y de forma circular haciendo pequeños montones que posteriormente serán recogidos con la pala, aunque lo más recomendable es el uso de aspiradora para no levantar polvo en el ambiente.</li>
+        <li>Para la limpieza de pisos y mobiliario, se realizará con mínima cantidad de agua, en un tobo pequeño lleno hasta un cuarto de su capacidad. Se limpia con coleto o mopas pequeñas y apenas húmedas para que recoja el polvo que no pudo limpiarse al barrer o pasar la aspiradora. La limpieza del mobiliario debe ser con un paño casi seco para que atrape el polvo sin levantarlo ni dejar humedad o mojado el mobiliario a limpiar.</li>
+        <li>Al realizar la limpieza con agua se debe cambiar cuantas veces sea necesario por agua limpia para no dejar el polvo atrapado por el paño y pegado en los pisos y mobiliario.</li>
+        <li>Se debe de realizar seguimiento a la presencia de plagas (ratones, cucarachas, limpia casa, termitas, etc.) y participar la presencia de ellos para tomar las medidas pertinentes. Debe observar las paredes y retirar y cerciorarse de eliminar al pececillo de plata (gusano de polvo, lepisma saccharina), insecto que se genera en las paredes y que representa una amenaza potencial al papel.</li>
+        <li>La limpieza de contenedores de documentos de polipropileno debe hacerse con un paño húmedo casi seco, y si es el caso de cajas de cartón, cajas forradas en tela con una brocha o aspiradora con pico de cepillo.</li>
+        <li>El personal del fondo documental preferiblemente el de limpieza, al terminar la jornada laboral debe sacar el agua de los contenedores de los deshumidificadores extraída del ambiente para el control ambiental y apagar todos los equipos electrónicos que se encuentren en los depósitos de la colección.</li>
+        <li>Tanto el personal administrativo como el de limpieza, al realizar actividades en los depósitos del fondo documental deben apagar las luces apenas terminen sus actividades.</li>
+    </ul>
 
 </body>
 </html>
