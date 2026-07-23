@@ -1,3 +1,478 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archivo Digital Carlos Raúl Villanueva - UNESCO Memoria del Mundo | COPRED UCV</title>
+    <style>
+        :root {
+            --ucv-blue: #002b49;
+            --ucv-gold: #c59b27;
+            --ucv-dark: #1a1a1a;
+            --ucv-light: #f8f9fa;
+            --ucv-accent: #0056b3;
+            --border-color: #e0e0e0;
+            --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--ucv-light);
+            color: var(--ucv-dark);
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--ucv-blue);
+            color: white;
+            padding: 1.5rem 2rem;
+            border-bottom: 4px solid var(--ucv-gold);
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .brand-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .brand-title p {
+            font-size: 0.9rem;
+            color: var(--ucv-gold);
+            font-weight: 500;
+        }
+
+        .badge-unesco {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--ucv-gold);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--ucv-blue) 0%, #004070 100%);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Controls / Search / Filter */
+        .controls-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .search-box {
+            flex: 2;
+            min-width: 250px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--ucv-blue);
+        }
+
+        .filter-box {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .filter-box select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background-color: white;
+            outline: none;
+            cursor: pointer;
+        }
+
+        /* Stats Bar */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--ucv-gold);
+            box-shadow: var(--card-shadow);
+        }
+
+        .stat-card h4 {
+            font-size: 0.85rem;
+            color: #666;
+            text-transform: uppercase;
+        }
+
+        .stat-card p {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--ucv-blue);
+            margin-top: 0.2rem;
+        }
+
+        /* Works Grid */
+        .grid-title {
+            font-size: 1.4rem;
+            color: var(--ucv-blue);
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid var(--ucv-gold);
+            padding-bottom: 0.4rem;
+            display: inline-block;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .work-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .work-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-header {
+            background-color: var(--ucv-blue);
+            color: white;
+            padding: 1rem 1.2rem;
+        }
+
+        .card-header h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .card-header span {
+            font-size: 0.8rem;
+            color: var(--ucv-gold);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-body {
+            padding: 1.2rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .meta-list {
+            list-style: none;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .meta-list li {
+            margin-bottom: 0.4rem;
+            color: #555;
+        }
+
+        .meta-list strong {
+            color: var(--ucv-dark);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 0.6rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--ucv-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #004070;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--ucv-blue);
+            color: var(--ucv-blue);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(0, 43, 73, 0.05);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--ucv-blue);
+            color: white;
+            text-align: center;
+            padding: 2rem 1rem;
+            margin-top: 4rem;
+            border-top: 4px solid var(--ucv-gold);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .controls-card {
+                flex-direction: column;
+            }
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="brand-title">
+                <h1>Consejo de Preservación y Desarrollo (COPRED)</h1>
+                <p>Universidad Central de Venezuela</p>
+            </div>
+            <div class="badge-unesco">
+                🏛️ Postulación UNESCO - Memoria del Mundo
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Repositorio Digital de la Obra de Carlos Raúl Villanueva</h2>
+            <p>Acceso abierto a los documentos, planos patrimoniales y planes de gestión de la Ciudad Universitaria de Caracas para la preservación del legado arquitectónico moderno.</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Control Panel -->
+        <div class="controls-card">
+            <div class="search-box">
+                <input type="text" id="searchInput" onkeyup="filterWorks()" placeholder="Buscar por edificación, tipo de plano o código de archivo...">
+            </div>
+            <div class="filter-box">
+                <select id="sectorFilter" onchange="filterWorks()">
+                    <option value="">Todos los sectores</option>
+                    <option value="Docente y Recursos">Sector Docente y Recursos</option>
+                    <option value="Central y Gobierno">Sector Central y Gobierno</option>
+                    <option value="Residencial y Deportes">Sector Residencial y Deportes</option>
+                    <option value="Salud y Medios">Sector Salud y Medios</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Metric Indicators -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h4>Edificaciones Registradas</h4>
+                <p id="countBuildings">--</p>
+            </div>
+            <div class="stat-card">
+                <h4>Planos Digitalizados</h4>
+                <p>+1,250</p>
+            </div>
+            <div class="stat-card">
+                <h4>Obras de Arte Integradas</h4>
+                <p>108</p>
+            </div>
+            <div class="stat-card">
+                <h4>Estatus UNESCO</h4>
+                <p style="font-size: 1.1rem; color: #28a745; margin-top: 0.5rem;">Documentación en Revisión</p>
+            </div>
+        </div>
+
+        <!-- Content Grid -->
+        <h3 class="grid-title">Catálogo Archival de Edificaciones y Planos</h3>
+        <div class="works-grid" id="worksContainer">
+            <!-- Cards generated dynamically via JavaScript -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Consejo de Preservación y Desarrollo (COPRED) - Universidad Central de Venezuela.</p>
+        <p>Proyecto para la inclusión del Fondo Documental Villanueva en el Programa Memoria del Mundo de la UNESCO.</p>
+    </footer>
+
+    <script>
+        // Data structure for Villanueva Architectural Repository
+        const villanuevaData = [
+            {
+                id: "VILL-001",
+                building: "Aula Magna y Plaza Cubierta",
+                sector: "Central y Gobierno",
+                year: "1952-1953",
+                plansCount: 142,
+                synthesisArt: "Alexander Calder (Nubes Acústicas), Fernand Léger, Jean Arp",
+                description: "Núcleo cultural y patrimonial de la Ciudad Universitaria, obra cumbre de la síntesis de las artes mayores."
+            },
+            {
+                id: "VILL-002",
+                building: "Biblioteca Central",
+                sector: "Central y Gobierno",
+                year: "1953",
+                plansCount: 98,
+                synthesisArt: "Fernand Léger, Carlos González Bogen",
+                description: "Torre de libros y cuerpo bajo con vitrales de Fernand Léger e integraciones escultóricas."
+            },
+            {
+                id: "VILL-003",
+                building: "Edificio del Rectorado",
+                sector: "Central y Gobierno",
+                year: "1952",
+                plansCount: 76,
+                synthesisArt: "Oswaldo Vigas, Mateo Manaure",
+                description: "Sede administrativa institucional articulada mediante pasillos cubiertos y patios internos."
+            },
+            {
+                id: "VILL-004",
+                building: "Facultad de Arquitectura y Urbanismo",
+                sector: "Docente y Recursos",
+                year: "1957",
+                plansCount: 115,
+                synthesisArt: "Alejandro Otero, Victor Vasarely",
+                description: "Estructura monumental modular representativa del periodo tardío del proyecto de Villanueva."
+            },
+            {
+                id: "VILL-005",
+                building: "Hospital Universitario de Caracas",
+                sector: "Salud y Medios",
+                year: "1950",
+                plansCount: 210,
+                synthesisArt: "Francisco Narváez",
+                description: "Primer gran complejo asistencial de la Ciudad Universitaria, punto de partida del campus moderno."
+            },
+            {
+                id: "VILL-006",
+                building: "Escuela Técnica Industrial / Facultad de Ingeniería",
+                sector: "Docente y Recursos",
+                year: "1948-1951",
+                plansCount: 165,
+                synthesisArt: "Victor Valera, Mateo Manaure",
+                description: "Conjunto de talleres, aulas y laboratorios integrados con celosías y ventilación natural."
+            }
+        ];
+
+        function renderCards(data) {
+            const container = document.getElementById('worksContainer');
+            container.innerHTML = '';
+
+            data.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'work-card';
+                card.innerHTML = `
+                    <div class="card-header">
+                        <h3>${item.building}</h3>
+                        <span>${item.id} | ${item.sector}</span>
+                    </div>
+                    <div class="card-body">
+                        <ul class="meta-list">
+                            <li><strong>Año de Proyección:</strong> ${item.year}</li>
+                            <li><strong>Planos Digitalizados:</strong> ${item.plansCount} expedientes</li>
+                            <li><strong>Síntesis de las Artes:</strong> ${item.synthesisArt}</li>
+                            <li style="margin-top: 0.6rem; font-size: 0.85rem; color: #666;">${item.description}</li>
+                        </ul>
+                        <div class="card-actions">
+                            <button class="btn btn-primary" onclick="alert('Abriendo expediente digital de ${item.building}')">Ver Planos (AutoCAD/PDF)</button>
+                            <button class="btn btn-outline" onclick="alert('Descargando ficha de gestión UNESCO para ${item.building}')">Ficha UNESCO</button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+
+            document.getElementById('countBuildings').innerText = data.length;
+        }
+
+        function filterWorks() {
             const searchValue = document.getElementById('searchInput').value.toLowerCase();
             const sectorValue = document.getElementById('sectorFilter').value;
 
