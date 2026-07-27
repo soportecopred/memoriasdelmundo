@@ -1,51 +1,51 @@
 async function cargarDatos() {
+    const cuerpoTabla = document.getElementById('cuerpo-tabla');
     try {
         const respuesta = await fetch('datos.csv');
-        const data = await respuesta.text();
+        if (!respuesta.ok) throw new Error("No se pudo cargar el archivo datos.csv");
         
-        // Expresión regular para separar por comas ignorando las que están dentro de comillas
-        const filas = data.split(/\r?\n/).slice(1); 
-        const cuerpoTabla = document.getElementById('cuerpo-tabla');
-        cuerpoTabla.innerHTML = ""; 
+        const data = await respuesta.text();
+        const filas = data.split(/\r?\n/).filter(linea => linea.trim() !== "");
+        
+        cuerpoTabla.innerHTML = ""; // Limpiar mensaje de carga
 
-        filas.forEach(linea => {
-            const columnas = linea.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-            
+        // Empezamos desde 1 para saltar el encabezado
+        for (let i = 1; i < filas.length; i++) {
+            // Regex para separar por comas ignorando las que están dentro de comillas
+            const columnas = filas[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+
             if (columnas.length > 1) {
                 const tr = document.createElement('tr');
                 
-                // Mapeo según estructura de Fuente 8/9:
-                // 0: Título, 7: Edificio, 2: Año, 5: Disciplina, 20: Resumen
-                const titulo = columnas?.replace(/"/g, '') || "Sin título";
-                const edificio = columnas[12]?.replace(/"/g, '') || "No identificado";
-                const anio = columnas[13]?.replace(/"/g, '') || "S/F";
-                const disciplina = columnas[14]?.replace(/"/g, '') || "General";
-                const resumen = columnas[15]?.replace(/"/g, '').substring(0, 150);
+                // Mapeo basado en tu archivo datos.csv (Fuente 8/9)
+                const titulo = (columnas || "Sin título").replace(/"/g, '');
+                const edificio = (columnas[15] || "No identificado").replace(/"/g, '');
+                const anio = (columnas[16] || "S/F").replace(/"/g, '');
+                const disciplina = (columnas[17] || "General").replace(/"/g, '');
+                const resumen = (columnas[18] || "Sin resumen disponible").replace(/"/g, '').substring(0, 150);
 
                 tr.innerHTML = `
                     <td><strong>${titulo}</strong></td>
                     <td>${edificio}</td>
                     <td>${anio}</td>
                     <td>${disciplina}</td>
-                    <td><a href="#" class="btn-ficha" onclick="alert('RESUMEN: ${resumen}...')">Ficha</a></td>
+                    <td><a href="#" class="btn-ficha" onclick="alert('RESUMEN: ${resumen}...')">Ver Detalle</a></td>
                 `;
                 cuerpoTabla.appendChild(tr);
             }
-        });
+        }
     } catch (error) {
-        console.error("Error al cargar el repositorio:", error);
-        document.getElementById('cuerpo-tabla').innerHTML = "<tr><td colspan='5'>Error al cargar los datos. Verifique que 'datos.csv' esté en la carpeta principal.</td></tr>";
+        console.error("Error:", error);
+        cuerpoTabla.innerHTML = `<tr><td colspan="5" style="color:red;">Error: ${error.message}. Asegúrese de que 'datos.csv' esté en la raíz del repositorio.</td></tr>`;
     }
 }
 
-// Buscador en tiempo real
+// Buscador
 document.getElementById('busqueda').addEventListener('keyup', function() {
     const valor = this.value.toLowerCase();
     const filas = document.querySelectorAll('#cuerpo-tabla tr');
-    
     filas.forEach(fila => {
-        const texto = fila.innerText.toLowerCase();
-        fila.style.display = texto.includes(valor) ? '' : 'none';
+        fila.style.display = fila.innerText.toLowerCase().includes(valor) ? '' : 'none';
     });
 });
 
