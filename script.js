@@ -16,10 +16,10 @@ async function cargarRepositorio() {
                 const sanear = (val) => (val === undefined || val === null) ? "" : String(val).replace(/"/g, '').trim();
                 const item = {
                     titulo: sanear(col),
-                    anio: sanear(col[6]),
-                    codigo: sanear(col[7]),
-                    edificio: sanear(col[8]),
-                    resumen: sanear(col[9])
+                    anio: sanear(col[7]),
+                    codigo: sanear(col[8]),
+                    edificio: sanear(col[9]),
+                    resumen: sanear(col[10])
                 };
                 acervoData.push(item);
                 const idx = acervoData.length - 1;
@@ -52,14 +52,14 @@ function mostrarFicha(idx) {
     const contenido = document.getElementById('detalleContenido');
     contenido.innerHTML = `
         <h2 style="color:var(--blue-ucv)">Ficha Patrimonial ICU</h2>
-        <div class="ficha-grid">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; background: #f4f7f9; padding: 20px; border-radius: 10px; margin: 20px 0;">
             <p><strong>Título:</strong> ${d.titulo}</p>
             <p><strong>Código:</strong> <code>${d.codigo}</code></p>
             <p><strong>Edificio:</strong> ${d.edificio}</p>
             <p><strong>Año:</strong> ${d.anio}</p>
         </div>
-        <div style="border-left: 4px solid var(--gold-ucv); padding-left: 20px; line-height: 1.8;">
-            <p><strong>Análisis y Resumen:</strong></p>
+        <div style="border-left: 5px solid var(--gold-ucv); padding-left: 20px; line-height: 1.8; text-align: justify;">
+            <p><strong>Análisis y Resumen Histórico:</strong></p>
             <p>${d.resumen}</p>
         </div>
     `;
@@ -76,3 +76,5 @@ document.getElementById('busqueda').addEventListener('keyup', (e) => {
         row.style.display = row.innerText.toLowerCase().includes(v) ? '' : 'none';
     });
 });
+
+document.addEventListener('DOMContentLoaded', cargarRepositorio);
