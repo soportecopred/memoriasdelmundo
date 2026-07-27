@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patrimonio CUC - COPRED UCV</title>
+    <title>Patrimonio CUC - Repositorio Digital</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -18,52 +18,49 @@
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#coleccion">La Colección</a></li>
-                        <li><a href="#preservacion">Preservación</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="container">
-            <h2>Salvaguarda Tecnológica</h2>
-            <p>Acceso universal al acervo documental de la Ciudad Universitaria de Caracas, Patrimonio Mundial.</p>
-        </div>
-    </section>
-
     <section id="coleccion" class="content-section">
         <div class="container">
             <h2>Explorar el Repositorio Maestro</h2>
-            <input type="text" id="busqueda" placeholder="Buscar por edificio, año o disciplina...">
+            <p>Buscador oficial del acervo. Haga clic en <strong>"Ver Ficha"</strong> para ver el detalle completo.</p>
+            <input type="text" id="busqueda" placeholder="Buscar por edificio, título, año o código...">
+
             <div class="tabla-contenedor">
                 <table>
                     <thead>
                         <tr>
+                            <th>Código</th>
                             <th>Título</th>
-                            <th>Edificio / Sector</th>
+                            <th>Edificio</th>
                             <th>Año</th>
-                            <th>Disciplina</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody id="cuerpo-tabla">
-                        <tr><td colspan="5">Iniciando conexión con el acervo...</td></tr>
+                        <tr><td colspan="5">Cargando registros...</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <section id="preservacion" class="content-section">
-        <div class="container">
-            <h2>Plan de Preservación</h2>
-            <p>Gestión digital bajo norma <strong>ISO 16363</strong> y metadatos <strong>Dublin Core</strong>.</p>
+    <!-- FICHA TÉCNICA DINÁMICA (MODAL) -->
+    <div id="modalFicha" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="cerrarModal()">&times;</span>
+            <div id="detalleContenido">
+                <!-- Se llena dinámicamente -->
+            </div>
         </div>
-    </section>
+    </div>
 
     <footer>
-        <p>&copy; 2026 COPRED - UCV. Universidad Central de Venezuela.</p>
+        <p>&copy; 2026 COPRED - UCV. Instrumento de Salvaguarda del Patrimonio Mundial.</p>
     </footer>
     <script src="script.js"></script>
 </body>
