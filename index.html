@@ -3,379 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plan de Gestión Integral - Fondo Documental ICU UCV</title>
-    <!-- Importación de tipografía profesional Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            /* Paleta Institucional Elegante */
-            --primary: #0f2942;       /* Azul marino institucional UCV */
-            --primary-light: #1e40af; /* Azul para acentos de subtítulo */
-            --accent: #991b1b;        /* Rojo vino patrimonial/alerta */
-            --accent-gold: #d97706;   /* Dorado tenue decorativo */
-            --text-main: #1e293b;    /* Gris oscuro para legibilidad óptima */
-            --text-muted: #64748b;   /* Gris medio para metadatos */
-            --bg-body: #f8fafc;       /* Fondo neutro ultrasuave */
-            --bg-card: #ffffff;       /* Tarjeta de contenedor */
-            --border-color: #e2e8f0;
-        }
-
-        @page {
-            size: A4;
-            margin: 15mm 12mm;
-        }
-
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            font-size: 10pt;
-            line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--bg-body);
-            margin: 0;
-            padding: 20px 0;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Contenedor tipo Hoja de Trabajo / Documento */
-        .document-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--bg-card);
-            padding: 40px 50px;
-            border-radius: 8px;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
-            border: 1px solid var(--border-color);
-        }
-
-        /* Encabezado Principal */
-        .header-banner {
-            background: linear-gradient(135deg, #0f2942 0%, #1e3a5f 100%);
-            color: #ffffff;
-            padding: 32px 36px;
-            margin: -40px -50px 32px -50px;
-            border-radius: 8px 8px 0 0;
-            border-bottom: 5px solid var(--accent);
-            position: relative;
-        }
-
-        .header-banner h1 {
-            font-size: 18pt;
-            margin: 0 0 8px 0;
-            font-weight: 800;
-            line-height: 1.25;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #ffffff;
-        }
-
-        .header-banner h2 {
-            font-size: 12pt;
-            margin: 0 0 14px 0;
-            font-weight: 500;
-            color: #93c5fd;
-            letter-spacing: 0.2px;
-        }
-
-        .header-banner .meta {
-            font-size: 8.5pt;
-            color: #cbd5e1;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 10px;
-            line-height: 1.4;
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        /* Etiquetas de Sección / Badge */
-        .doc-header-tag {
-            background-color: #f1f5f9;
-            color: var(--primary);
-            border: 1px solid #cbd5e1;
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 14px;
-            font-size: 8.5pt;
-            font-weight: 700;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-        }
-
-        .doc-header-tag::before {
-            content: '•';
-            color: var(--accent);
-            font-size: 14pt;
-            margin-right: 6px;
-            line-height: 0;
-        }
-
-        /* Títulos */
-        h2.section-title {
-            font-size: 13pt;
-            color: var(--primary);
-            border-left: 4px solid var(--accent);
-            padding: 4px 0 4px 12px;
-            margin-top: 32px;
-            margin-bottom: 14px;
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 0.3px;
-            page-break-after: avoid;
-            background: linear-gradient(90deg, #f8fafc 0%, rgba(248, 250, 252, 0) 100%);
-        }
-
-        h3.subsection-title {
-            font-size: 11pt;
-            color: var(--primary-light);
-            margin-top: 20px;
-            margin-bottom: 8px;
-            font-weight: 600;
-            page-break-after: avoid;
-            display: flex;
-            align-items: center;
-        }
-
-        h3.subsection-title::before {
-            content: '';
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-gold);
-            border-radius: 50%;
-            margin-right: 8px;
-        }
-
-        /* Texto y Párrafos */
-        p {
-            margin: 0 0 12px 0;
-            text-align: justify;
-            hyphens: auto;
-        }
-
-        p strong {
-            color: var(--primary);
-        }
-
-        /* Listas Mejoradas */
-        ul, ol {
-            margin: 0 0 16px 0;
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 6px;
-            text-align: justify;
-            padding-left: 4px;
-        }
-
-        li::marker {
-            color: var(--primary-light);
-            font-weight: bold;
-        }
-
-        /* Cajas Informativas Especiales */
-        .callout-box {
-            background-color: #f0f9ff;
-            border-left: 4px solid #0284c7;
-            padding: 14px 16px;
-            margin: 16px 0;
-            border-radius: 0 6px 6px 0;
-            font-size: 9.5pt;
-        }
-
-        .alert-box {
-            background-color: #fef2f2;
-            border-left: 4px solid var(--accent);
-            padding: 14px 16px;
-            margin: 16px 0;
-            border-radius: 0 6px 6px 0;
-            font-size: 9.5pt;
-        }
-
-        .summary-card {
-            background-color: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 16px;
-            margin-bottom: 20px;
-        }
-
-        /* Divisores */
-        .document-divider {
-            border: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #cbd5e1, transparent);
-            margin: 36px 0 24px 0;
-        }
-
-        /* Ajustes para Impresión / Guardado PDF */
-        @media print {
-            body {
-                background-color: #ffffff;
-                padding: 0;
-            }
-            .document-container {
-                box-shadow: none;
-                border: none;
-                padding: 0;
-                max-width: 100%;
-            }
-            .header-banner {
-                margin: 0 0 20px 0;
-                border-radius: 0;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .section-title, .doc-header-tag {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-        }
-    </style>
+    <title>Repositorio Digital CUC - COPRED UCV</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<div class="document-container">
-
-    <div class="header-banner">
-        <h1>Plan de Gestión Integral y Gerencial de Preservación, Gestión de Riesgos y Acceso</h1>
-        <h2>Fondo Documental ICU – UCV (1943 - 1975)</h2>
-        <div class="meta">
-            <span><strong>Órgano:</strong> Consejo de Preservación y Desarrollo (COPRED – UCV)</span>
-            <span><strong>División:</strong> Información Patrimonial</span>
-            <span><strong>Sede:</strong> Casona Ibarra - Ciudad Universitaria de Caracas</span>
+    <header>
+        <div class="container">
+            <h1>🏛️ Patrimonio Documental de la Ciudad Universitaria de Caracas</h1>
+            <p>Fondo Documental ICU – UCV (1943 - 1975)</p>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#coleccion">La Colección</a></li>
+                    <li><a href="#preservacion">Plan de Preservación</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
         </div>
-    </div>
+    </header>
 
-    <!-- DOCUMENTO 1 -->
-    <div class="doc-header-tag">Documento 1: Plan de Conservación y Gestión Integral</div>
+    <section id="hero">
+        <div class="container">
+            <h2>Salvaguarda Tecnológica del Patrimonio Mundial</h2>
+            <p>Acceso universal al "ADN" arquitectónico y artístico de la obra maestra de Carlos Raúl Villanueva [5, 6].</p>
+        </div>
+    </section>
 
-    <p>La Colección Instituto Ciudad Universitaria (ICU) es un invaluable acervo documental que encapsula la historia, el desarrollo y la evolución de un hito arquitectónico y urbanístico: la Ciudad Universitaria de Caracas. Este patrimonio abarca desde los planos originales, bocetos, hasta la correspondencia, fotografías, informes técnicos, registros de construcción y documentos administrativos que narran la concepción, edificación y vida de este complejo declarado Patrimonio de la Humanidad por la UNESCO.</p>
+    <main class="container">
+        <section id="coleccion">
+            <h2>Explorar el Acervo</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Planos Técnicos</h3>
+                    <p>Más de miles de planos estructurales, arquitectónicos y paisajísticos en alta resolución [3, 7].</p>
+                </div>
+                <div class="card">
+                    <h3>Síntesis de las Artes</h3>
+                    <p>Documentación de murales y obras de artistas como Calder, Vasarely y Manaure [4, 8, 9].</p>
+                </div>
+                <div class="card">
+                    <h3>Archivo Fotográfico</h3>
+                    <p>Registro histórico de la construcción y la vida en el campus universitario [3, 7].</p>
+                </div>
+                <div class="card">
+                    <h3>Gestión Administrativa</h3>
+                    <p>Memorias, informes técnicos y registros legales desde 1943 [4, 10].</p>
+                </div>
+            </div>
+        </section>
 
-    <h2 class="section-title">Importancia de la Colección ICU</h2>
-    <p>Para la región de América Latina y el Caribe, y particularmente para Venezuela, la Colección ICU es de gran importancia debido a que:</p>
-    <ul>
-        <li><strong>Génesis Arquitectónica:</strong> Documenta la génesis y materialización de la Ciudad Universitaria, considerada una de las obras maestras del urbanismo y la arquitectura moderna en el continente. Proporciona una visión sin precedentes sobre la visión de Carlos Raúl Villanueva y otros colaboradores en la integración de arte, arquitectura y funcionalidad.</li>
-        <li><strong>Símbolo de Identidad:</strong> La Ciudad Universitaria es un símbolo de identidad y orgullo para Venezuela. La colección preserva la memoria de este logro nacional, permitiendo a las nuevas generaciones comprender sus raíces y la magnitud de este proyecto.</li>
-        <li><strong>Planificación Urbana:</strong> Ofrece lecciones valiosas sobre planificación urbana y la creación de espacios sostenibles y funcionales, sirviendo como caso de estudio para futuros proyectos de desarrollo en el país.</li>
-        <li><strong>Memoria Colectiva:</strong> Constituye una parte fundamental de la memoria colectiva venezolana, albergando las historias de estudiantes, artistas, arquitectos y trabajadores que dieron vida a este espacio.</li>
-    </ul>
+        <section id="preservacion">
+            <h2>Estándares de Preservación Digital</h2>
+            <p>Nuestra gestión se alinea con la norma <strong>ISO 16363</strong> para repositorios digitales confiables y utiliza metadatos estandarizados <strong>Dublin Core</strong> [11, 12].</p>
+            <ul>
+                <li>Captura digital en formato TIFF (600 ppi) para preservación [13, 14].</li>
+                <li>Consulta remota en formatos PDF optimizados para investigadores globales [15, 16].</li>
+                <li>Redundancia de datos en servidores redundantes basados en la nube [11, 17].</li>
+            </ul>
+        </section>
+    </main>
 
-    <p>La relevancia de la Colección ICU trasciende las fronteras regionales, impactando a la humanidad por:</p>
-    <ul>
-        <li><strong>Valor Testimonial Universal:</strong> Al ser parte de un sitio declarado Patrimonio de la Humanidad por la UNESCO, esta colección es un testimonio directo de la creatividad humana y un ejemplo sobresaliente de la arquitectura y el urbanismo del siglo XX. Es un recurso indispensable para el estudio del movimiento moderno a escala global.</li>
-        <li><strong>Síntesis de las Artes:</strong> Ilustra de manera excepcional la integración de las artes plásticas con la arquitectura, una característica distintiva de la Ciudad Universitaria. Los documentos revelan el proceso colaborativo entre arquitectos, ingenieros y artistas de talla mundial (como Alexander Calder, Fernand Léger y Jean Arp), ofreciendo una perspectiva única sobre este movimiento artístico global.</li>
-        <li><strong>Modernidad en el Trópico:</strong> Esta Colección permite a investigadores y estudiosos de todo el mundo analizar la visión y los desafíos de la construcción de la modernidad en el trópico, ofreciendo un contrapunto a las experiencias europeas y norteamericanas.</li>
-        <li><strong>Inspiración Profesional:</strong> Sirve como fuente de inspiración para arquitectos, urbanistas y diseñadores a nivel global, demostrando cómo la planificación integral y la visión a largo plazo pueden resultar en espacios que trascienden su función original para convertirse en obras de arte vivientes.</li>
-    </ul>
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 COPRED - UCV. Consejo de Preservación y Desarrollo. Patrimonio de la Humanidad - UNESCO [1, 10].</p>
+        </div>
+    </footer>
 
-    <div class="callout-box">
-        <strong>Valor Universal Excepcional:</strong> La Colección ICU posee una capacidad única para documentar un punto de inflexión en la arquitectura moderna y la integración de las artes, su conexión directa con un sitio Patrimonio de la Humanidad, y su innegable contribución al conocimiento sobre la planificación urbana del siglo XX. Su preservación y acceso son esenciales para la memoria del mundo.
-    </div>
-
-    <h2 class="section-title">Criterios de Valoración Patrimonial</h2>
-    
-    <h3 class="subsection-title">Relevancia Histórica y Cronológica (Criterio de Tiempo y Época)</h3>
-    <p>La Colección ICU es un testimonio primario e insustituible del diseño y construcción de la Ciudad Universitaria de Caracas, un proyecto que se gestó y desarrolló durante un período crucial del siglo XX (principalmente entre 1944 y 1960). Este lapso fue determinante para el Movimiento Moderno en la arquitectura y el urbanismo a escala global. La colección documenta la evolución de ideas, la planificación y la ejecución de un campus universitario integral, reflejando las aspiraciones y los avances tecnológicos y estéticos de su tiempo en un contexto tropical.</p>
-
-    <h3 class="subsection-title">Formato y Estilo (Criterio Estético, Artístico y Arquitectónico)</h3>
-    <p>La colección es excepcionalmente rica en materiales que evidencian la "Síntesis de las Artes Mayores", un concepto central de la Ciudad Universitaria. Contiene planos detallados, bocetos artísticos y correspondencia que ilustran la colaboración sin precedentes entre el arquitecto Carlos Raúl Villanueva y artistas de renombre internacional como Alexander Calder, Fernand Léger y Jean Arp, entre otros. Estos documentos no son solo registros técnicos, sino testimonio directo de un proceso creativo único.</p>
-
-    <h3 class="subsection-title">Relevancia Geográfica (Criterio de Lugar y Espacio)</h3>
-    <p>Los documentos de la Colección ICU están intrínsecamente ligados a la Ciudad Universitaria de Caracas, un sitio inscrito en la Lista del Patrimonio Mundial de la UNESCO desde el año 2000. Esta colección es la memoria viva y el "ADN" de ese patrimonio físico. Revela la transformación de un paisaje tropical en un complejo urbano-arquitectónico de magnitud.</p>
-
-    <h3 class="subsection-title">Relevancia Temática (Criterio de Tema y Contenido)</h3>
-    <p>La Colección ICU aborda temas universales de gran trascendencia como lo son:</p>
-    <ul>
-        <li>Aplicación de principios arquitectónicos y urbanísticos modernos en un proyecto de gran escala.</li>
-        <li>Creación de un espacio diseñado para fomentar el conocimiento, la investigación y la expresión cultural en una universidad pública de vanguardia.</li>
-        <li>Registros de los desafíos técnicos y las soluciones innovadoras empleadas en una de las obras de ingeniería y construcción más ambiciosas de su tiempo en América Latina.</li>
-    </ul>
-
-    <h3 class="subsection-title">Rara e Irremplazable (Criterio de Unicidad y Sustituibilidad)</h3>
-    <p>La Colección ICU es única e irremplazable. Muchos de sus documentos son originales, manuscritos, dibujos técnicos con anotaciones directas de los creadores, y fotografías inéditas que no existen en ninguna otra parte. Su pérdida o destrucción significaría la pérdida de la evidencia primaria de uno de los proyectos arquitectónicos y urbanísticos más importantes del siglo XX.</p>
-
-    <h3 class="subsection-title">Integridad (Criterio de Completitud)</h3>
-    <p>La colección presenta un alto grado de integridad y completitud en relación con la historia de la Ciudad Universitaria. Abarca todas las etapas, desde la concepción hasta la construcción y la vida temprana del campus, lo que permite una comprensión holística del proyecto y su contexto.</p>
-
-    <h2 class="section-title">Estado Actual del Patrimonio Documental</h2>
-    <p>El estado actual del patrimonio documental de la Colección ICU, si bien se reconoce su inmenso valor histórico, artístico y universal, presenta desafíos asociados a su preservación física, la gestión digital y la infraestructura existente. La Colección es heterogénea y abarca una amplia variedad de formatos:</p>
-    <ul>
-        <li><strong>Planos y Dibujos Técnicos:</strong> Miles de planos en distintos tamaños y materiales (papel vegetal, papel de dibujo, tela), algunos de gran formato, que muestran el diseño estructural, arquitectónico y paisajístico. Muchos presentan dobleces, rasgaduras, manchas y amarillamiento debido a la acidez del papel.</li>
-        <li><strong>Documentos Textuales:</strong> Papeles diversos (cartas, memorias, informes, contratos) de mediados del siglo XX, muchos de ellos con acidez intrínseca, tintas que se desvanecen y fragilidad.</li>
-        <li><strong>Material Fotográfico:</strong> Un vasto archivo fotográfico con positivos en papel (B/N), negativos de película (nitrato, acetato, poliéster) y diapositivas, sumamente vulnerables a decoloración, ataque fúngico y degradación química.</li>
-    </ul>
-
-    <div class="alert-box">
-        <strong>Riesgos Críticos Identificados:</strong> La ubicación en una zona sísmica de Caracas, junto con la posibilidad de humedad fluctuante, incendios, inundaciones o plagas (insectos, roedores), representan amenazas latentes continuas sobre la integridad física de los materiales.
-    </div>
-
-    <h3 class="subsection-title">Grado de Organización y Descripción</h3>
-    <p>La colección posee un grado de organización variable. Algunas secciones están bien catalogadas e inventariadas, con instrumentos de descripción que facilitan la localización. Sin embargo, existen fondos pendientes de organización, identificación detallada y elaboración de metadatos completos bajo normas internacionales.</p>
-
-    <h2 class="section-title">Plan de Conservación Preventiva y Curativa</h2>
-    <p>Este plan detalla las estrategias y acciones para mitigar el deterioro y prolongar la vida útil del patrimonio documental físico de la Colección ICU. Se enfoca tanto en la prevención de futuros daños como en la intervención curativa sobre el deterioro ya existente.</p>
-    
-    <div class="summary-card">
-        <strong>Objetivo General:</strong> Asegurar la estabilidad física y la longevidad del patrimonio documental de la Colección ICU, garantizando su disponibilidad para la digitalización y el acceso a largo plazo.
-    </div>
-
-    <h3 class="subsection-title">Conservación Preventiva: Control del Entorno y Riesgos</h3>
-    <ul>
-        <li><strong>Control Ambiental:</strong> Monitoreo constante de temperatura y humedad relativa (HR). Temperatura entre 18°C y 22°C y HR entre 45% y 55% para soporte papel, con ajustes específicos para fotografía (15-18°C y 30-40% HR).</li>
-        <li><strong>Estabilización Ambiental:</strong> Climatización mediante aire acondicionado y deshumidificadores con filtros de aire. Correcta ventilación para evitar acumulación de humedad y moho.</li>
-        <li><strong>Control de Iluminación:</strong> Instalación de filtros UV en ventanas y uso de iluminación LED de baja intensidad en áreas de depósito. Apagado de luces al desocupar áreas.</li>
-        <li><strong>Mobiliario Archivístico:</strong> Estanterías metálicas con recubrimiento electrostático y gabinetes de archivo específicos para planos. Distancia mínima de 15 cm con paredes o suelo.</li>
-        <li><strong>Materiales de Guarda:</strong> Carpetas, cajas y tubos archivísticos libres de ácido y con reserva alcalina. Evitar el contacto con adhesivos comerciales.</li>
-        <li><strong>Manejo Integrado de Plagas (MIP):</strong> Colocación de trampas no tóxicas, sellado de grietas y prohibición estricta de alimentos o bebidas en depósitos.</li>
-        <li><strong>Planes de Contingencia:</strong> Mapeo de áreas vulnerables a sismos/inundaciones, kits de emergencia (mascarillas, guantes, material absorbente) y capacitación continua del personal.</li>
-    </ul>
-
-    <h3 class="subsection-title">Conservación Curativa: Intervención Directa</h3>
-    <ul>
-        <li><strong>Diagnóstico y Clasificación:</strong> Evaluación individualizada categorizando el deterioro en leve, moderado o severo para definir intervenciones prioritarias.</li>
-        <li><strong>Limpieza y Estabilización:</strong> Limpieza mecánica en seco con brochas suaves/aspiradoras de baja potencia y reparación de rasgaduras con papel japonés y adhesivos reversibles.</li>
-        <li><strong>Tratamiento de Moho:</strong> Aislamiento inmediato de piezas afectadas y saneamiento en cabinas de flujo laminar.</li>
-        <li><strong>Aplanado de Planos:</strong> Humectación controlada y aplanado previo a la digitalización para evitar fracturas en los soportes.</li>
-    </ul>
-
-    <h2 class="section-title">Plan de Digitalización y Preservación Digital</h2>
-    <p>Proceso previo a la captura digital:</p>
-    <ul>
-        <li><strong>Limpieza en Seco:</strong> Eliminación de polvo superficial con brochas de pelo de camello suave por ambas caras.</li>
-        <li><strong>Retiro de Material Nocivo:</strong> Extracción cuidadosa de grapas, clips metálicos, ganchos y cintas adhesivas degradadas.</li>
-    </ul>
-
-    <h3 class="subsection-title">Metodología y Estándares de Captura</h3>
-    <ul>
-        <li>Digitalización con escáneres planetarios de alta resolución y luz fría.</li>
-        <li>Generación de másters de conservación en formato **TIFF sin compresión (600 ppi, 48 bits de color)** y derivados de acceso en **JPEG/PDF**.</li>
-        <li>Creación de metadatos estandarizados (EAD, Dublin Core) e integración en repositorios seguros.</li>
-        <li>Estrategias de preservación digital a largo plazo: copias de respaldo redundantes y verificación periódica de sumas de comprobación (checksums).</li>
-    </ul>
-
-    <h2 class="section-title">Normas de Consulta y Manipulación (CUC - ICU)</h2>
-    
-    <h3 class="subsection-title">Requisitos y Reglamento de Sala</h3>
-    <ul>
-        <li><strong>Registro Obligatorio:</strong> Llenado de planilla de solicitud aceptando los términos de conservación del material.</li>
-        <li><strong>Acceso Restringido a Depósitos:</strong> La consulta se realiza de forma indirecta mediante catálogos digitales; los documentos son servidos únicamente por el personal del archivo.</li>
-        <li><strong>Perfil de Usuarios:</strong> Estudiantes de pregrado tendrán acceso exclusivo a colecciones digitalizadas. Investigadores y docentes podrán solicitar consulta de originales física bajo justificación.</li>
-        <li><strong>Útiles Permitidos:</strong> Únicamente lápiz de grafito, papel o dispositivos electrónicos (sin fundas aparatosas). Prohibido el uso de bolígrafos, marcadores, tijeras o pegamentos.</li>
-        <li><strong>Protocolo de Higiene:</strong> Lavado previo de manos obligatorio antes de manipular colecciones. Uso restringido de guantes según las especificaciones del conservador.</li>
-    </ul>
-
-</div>
-
+    <script src="script.js"></script>
 </body>
 </html>
