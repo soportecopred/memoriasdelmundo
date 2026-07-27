@@ -3,70 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repositorio Digital CUC - COPRED UCV</title>
+    <title>Repositorio CUC - COPRED</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <!-- Navegación Fija -->
     <header>
         <div class="container">
-            <h1>🏛️ Patrimonio Documental de la Ciudad Universitaria de Caracas</h1>
-            <p>Fondo Documental ICU – UCV (1943 - 1975)</p>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#coleccion">La Colección</a></li>
-                    <li><a href="#preservacion">Plan de Preservación</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
-                </ul>
-            </nav>
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <h1>🏛️ Patrimonio CUC</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#coleccion">La Colección</a></li>
+                        <li><a href="#preservacion">Plan de Preservación</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
     </header>
 
-    <section id="hero">
+    <!-- Sección Inicio -->
+    <section id="inicio" class="hero">
         <div class="container">
-            <h2>Salvaguarda Tecnológica del Patrimonio Mundial</h2>
-            <p>Acceso universal al "ADN" arquitectónico y artístico de la obra maestra de Carlos Raúl Villanueva [5, 6].</p>
+            <h2>Fondo Documental ICU (1943 - 1975)</h2>
+            <p>Salvaguarda tecnológica de la Ciudad Universitaria de Caracas, Patrimonio Mundial de la UNESCO [1, 2].</p>
         </div>
     </section>
 
-    <main class="container">
-        <section id="coleccion">
-            <h2>Explorar el Acervo</h2>
+    <!-- Sección La Colección -->
+    <section id="coleccion" class="content-section">
+        <div class="container">
+            <h2>La Colección</h2>
+            <p>Acceso a miles de registros técnicos y administrativos que narran la construcción del campus [3].</p>
             <div class="grid">
                 <div class="card">
-                    <h3>Planos Técnicos</h3>
-                    <p>Más de miles de planos estructurales, arquitectónicos y paisajísticos en alta resolución [3, 7].</p>
+                    <h3>Aula Magna</h3>
+                    <p>Planos de tratamiento acústico y ubicación de las nubes de Calder [4].</p>
                 </div>
                 <div class="card">
-                    <h3>Síntesis de las Artes</h3>
-                    <p>Documentación de murales y obras de artistas como Calder, Vasarely y Manaure [4, 8, 9].</p>
+                    <h3>Hospital Clínico</h3>
+                    <p>Memorias de cálculo y planos estructurales esenciales para la restauración auténtica [5].</p>
                 </div>
                 <div class="card">
-                    <h3>Archivo Fotográfico</h3>
-                    <p>Registro histórico de la construcción y la vida en el campus universitario [3, 7].</p>
+                    <h3>Plaza Cubierta</h3>
+                    <p>Integración de obras de arte de Vasarely, Navarro y Leger [4].</p>
                 </div>
                 <div class="card">
-                    <h3>Gestión Administrativa</h3>
-                    <p>Memorias, informes técnicos y registros legales desde 1943 [4, 10].</p>
+                    <h3>Estadio de Béisbol</h3>
+                    <p>Planos arquitectónicos y detalles de ingeniería de 1950 [4].</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="preservacion">
-            <h2>Estándares de Preservación Digital</h2>
-            <p>Nuestra gestión se alinea con la norma <strong>ISO 16363</strong> para repositorios digitales confiables y utiliza metadatos estandarizados <strong>Dublin Core</strong> [11, 12].</p>
+    <!-- Sección Plan de Preservación -->
+    <section id="preservacion" class="content-section">
+        <div class="container">
+            <h2>Plan de Preservación</h2>
+            <p>Nuestra estrategia se basa en siete ejes técnico-metodológicos para garantizar la resiliencia del acervo [2].</p>
             <ul>
-                <li>Captura digital en formato TIFF (600 ppi) para preservación [13, 14].</li>
-                <li>Consulta remota en formatos PDF optimizados para investigadores globales [15, 16].</li>
-                <li>Redundancia de datos en servidores redundantes basados en la nube [11, 17].</li>
+                <li><strong>Preservación Digital:</strong> Escaneos a 600 ppi en formato TIFF [6, 7].</li>
+                <li><strong>Control Ambiental:</strong> Monitoreo constante de temperatura (18–22 °C) y humedad (45–55%) [8, 9].</li>
+                <li><strong>Resiliencia:</strong> Copias de seguridad en la nube tras el sismo de 2026 [10, 11].</li>
             </ul>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="content-section footer-contact">
+        <div class="container">
+            <h2>Contacto</h2>
+            <p><strong>COPRED - UCV</strong></p>
+            <p>Sede: Casona Ibarra, Ciudad Universitaria de Caracas [5].</p>
+            <p>Patrimonio de la Humanidad desde el año 2000 [2].</p>
+        </div>
+    </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2026 COPRED - UCV. Consejo de Preservación y Desarrollo. Patrimonio de la Humanidad - UNESCO [1, 10].</p>
-        </div>
+        <p>&copy; 2026 Consejo de Preservación y Desarrollo. Universidad Central de Venezuela.</p>
     </footer>
 
     <script src="script.js"></script>
