@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repositorio CUC - COPRED</title>
+    <title>Patrimonio CUC - COPRED UCV</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <!-- Navegación Fija -->
     <header>
         <div class="container">
             <div class="nav-wrapper">
                 <div class="logo">
                     <h1>🏛️ Patrimonio CUC</h1>
+                    <p>Fondo Documental ICU (1943-1975)</p>
                 </div>
                 <nav>
                     <ul>
                         <li><a href="#inicio">Inicio</a></li>
                         <li><a href="#coleccion">La Colección</a></li>
-                        <li><a href="#preservacion">Plan de Preservación</a></li>
+                        <li><a href="#preservacion">Preservación</a></li>
                         <li><a href="#contacto">Contacto</a></li>
                     </ul>
                 </nav>
@@ -27,66 +26,66 @@
         </div>
     </header>
 
-    <!-- Sección Inicio -->
     <section id="inicio" class="hero">
         <div class="container">
-            <h2>Fondo Documental ICU (1943 - 1975)</h2>
-            <p>Salvaguarda tecnológica de la Ciudad Universitaria de Caracas, Patrimonio Mundial de la UNESCO [1, 2].</p>
+            <h2>Salvaguarda Tecnológica del Patrimonio Mundial</h2>
+            <p>Acceso universal al "DNA" de la Ciudad Universitaria de Caracas, sitio inscrito en la Lista de Patrimonio Mundial de la UNESCO en el año 2000 [2, 4].</p>
         </div>
     </section>
 
-    <!-- Sección La Colección -->
-   <section id="coleccion" class="content-section">
-    <div class="container">
-        <h2>Explorar el Repositorio Maestro CUC</h2>
-        <p>Buscador oficial del acervo documental (1943-1975) bajo estándares de la UNESCO [5, 6].</p>
-        
-        <!-- Buscador en tiempo real -->
-        <input type="text" id="busqueda" placeholder="Buscar por edificio, año o disciplina (ej. Aula Magna)..." style="width:100%; padding:10px; margin-bottom:20px;">
+    <section id="coleccion" class="content-section">
+        <div class="container">
+            <h2>Explorar el Repositorio Maestro</h2>
+            <p>Buscador del acervo documental: planos, informes y registros técnicos [1].</p>
+            
+            <input type="text" id="busqueda" placeholder="Buscar por edificio, año o disciplina (ej. Aula Magna)...">
 
-        <div id="tabla-contenedor" style="overflow-x:auto;">
-            <table id="tabla-repositorio" style="width:100%; border-collapse: collapse;">
-                <thead>
-                    <tr style="background-color: var(--blue-ucv); color: white; text-align: left;">
-                        <th style="padding:10px;">Título</th>
-                        <th style="padding:10px;">Edificio</th>
-                        <th style="padding:10px;">Año</th>
-                        <th style="padding:10px;">Disciplina</th>
-                        <th style="padding:10px;">Acceso</th>
-                    </tr>
-                </thead>
-                <tbody id="cuerpo-tabla">
-                    <!-- Los datos de Notion se cargarán aquí -->
-                </tbody>
-            </table>
+            <div class="tabla-contenedor">
+                <table id="tabla-repositorio">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Edificio / Sector</th>
+                            <th>Año</th>
+                            <th>Disciplina</th>
+                            <th>Acción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="cuerpo-tabla">
+                        <!-- Datos cargados dinámicamente -->
+                    </tbody>
+                </table>
+            </div>
         </div>
-    </div>
-</section>
-    <!-- Sección Plan de Preservación -->
+    </section>
+
     <section id="preservacion" class="content-section">
         <div class="container">
-            <h2>Plan de Preservación</h2>
-            <p>Nuestra estrategia se basa en siete ejes técnico-metodológicos para garantizar la resiliencia del acervo [2].</p>
-            <ul>
-                <li><strong>Preservación Digital:</strong> Escaneos a 600 ppi en formato TIFF [6, 7].</li>
-                <li><strong>Control Ambiental:</strong> Monitoreo constante de temperatura (18–22 °C) y humedad (45–55%) [8, 9].</li>
-                <li><strong>Resiliencia:</strong> Copias de seguridad en la nube tras el sismo de 2026 [10, 11].</li>
-            </ul>
+            <h2>Plan de Preservación Digital</h2>
+            <p>Gestión alineada con la norma <strong>ISO 16363</strong> para repositorios confiables [5, 6].</p>
+            <div class="grid">
+                <div class="card">
+                    <h3>Digitalización</h3>
+                    <p>Captura en formato TIFF a 600 ppi para asegurar fidelidad al original [7, 8].</p>
+                </div>
+                <div class="card">
+                    <h3>Resiliencia</h3>
+                    <p>Respaldos en la nube para garantizar la recuperación tras eventos sísmicos [5, 9].</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Sección Contacto -->
-    <section id="contacto" class="content-section footer-contact">
+    <section id="contacto" class="content-section">
         <div class="container">
             <h2>Contacto</h2>
             <p><strong>COPRED - UCV</strong></p>
-            <p>Sede: Casona Ibarra, Ciudad Universitaria de Caracas [5].</p>
-            <p>Patrimonio de la Humanidad desde el año 2000 [2].</p>
+            <p>División de Información Patrimonial. Sede: Casona Ibarra, Caracas [2, 10].</p>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Consejo de Preservación y Desarrollo. Universidad Central de Venezuela.</p>
+        <p>&copy; 2026 Consejo de Preservación y Desarrollo - Universidad Central de Venezuela.</p>
     </footer>
 
     <script src="script.js"></script>
