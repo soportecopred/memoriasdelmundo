@@ -8,60 +8,62 @@
 </head>
 <body>
     <header>
-        <div class="container">
-            <div class="nav-wrapper">
-                <div class="logo">
-                    <h1>🏛️ Patrimonio CUC</h1>
-                    <p>Fondo Documental ICU (1943-1975)</p>
-                </div>
-                <nav>
-                    <ul>
-                        <li><a href="#inicio">Inicio</a></li>
-                        <li><a href="#coleccion">La Colección</a></li>
-                    </ul>
-                </nav>
+        <div class="container nav-wrapper">
+            <div class="logo">
+                <h1>🏛️ Patrimonio CUC</h1>
+                <p>Fondo Documental ICU (1943-1975)</p>
             </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#coleccion">La Colección</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
+
+    <section id="inicio" class="hero">
+        <div class="container">
+            <h2>Salvaguarda Tecnológica del Patrimonio Mundial</h2>
+            <p>Acceso al ADN documental de la Ciudad Universitaria de Caracas bajo estándares UNESCO.</p>
+        </div>
+    </section>
 
     <section id="coleccion" class="content-section">
         <div class="container">
             <h2>Explorar el Repositorio Maestro</h2>
-            <p>Buscador oficial del acervo. Haga clic en <strong>"Ver Ficha"</strong> para ver el detalle completo.</p>
-            <input type="text" id="busqueda" placeholder="Buscar por edificio, título, año o código...">
+            <input type="text" id="busqueda" placeholder="Buscar por título, edificio, código o año...">
 
             <div class="tabla-contenedor">
                 <table>
                     <thead>
                         <tr>
                             <th>Código</th>
-                            <th>Título</th>
+                            <th>Título del Documento</th>
                             <th>Edificio</th>
                             <th>Año</th>
                             <th>Acción</th>
                         </tr>
                     </thead>
                     <tbody id="cuerpo-tabla">
-                        <tr><td colspan="5">Cargando registros...</td></tr>
+                        <tr><td colspan="5">Sincronizando con la base de datos...</td></tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </section>
 
-    <!-- FICHA TÉCNICA DINÁMICA (MODAL) -->
     <div id="modalFicha" class="modal">
         <div class="modal-content">
-            <span class="close" onclick="cerrarModal()">&times;</span>
-            <div id="detalleContenido">
-                <!-- Se llena dinámicamente -->
-            </div>
+            <button class="close-btn" onclick="document.getElementById('modalFicha').style.display='none'">&times;</button>
+            <div id="detalleContenido"></div>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2026 COPRED - UCV. Instrumento de Salvaguarda del Patrimonio Mundial.</p>
+        <p>&copy; 2026 COPRED - UCV. Consejo de Preservación y Desarrollo. Patrimonio de la Humanidad.</p>
     </footer>
+
     <script src="script.js"></script>
 </body>
 </html>
