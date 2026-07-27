@@ -5,24 +5,26 @@ async function cargarDatos() {
         if (!respuesta.ok) throw new Error("No se pudo cargar el archivo datos.csv");
         
         const data = await respuesta.text();
+        // Separamos por líneas y filtramos las vacías
         const filas = data.split(/\r?\n/).filter(linea => linea.trim() !== "");
         
-        cuerpoTabla.innerHTML = ""; // Limpiar mensaje de carga
+        cuerpoTabla.innerHTML = ""; 
 
-        // Empezamos desde 1 para saltar el encabezado
+        // Empezamos en 1 para saltar el encabezado del CSV
         for (let i = 1; i < filas.length; i++) {
-            // Regex para separar por comas ignorando las que están dentro de comillas
+            // Expresión regular para separar por comas respetando las comillas
             const columnas = filas[i].split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
             if (columnas.length > 1) {
                 const tr = document.createElement('tr');
                 
-                // Mapeo basado en tu archivo datos.csv (Fuente 8/9)
-                const titulo = (columnas || "Sin título").replace(/"/g, '');
-                const edificio = (columnas[15] || "No identificado").replace(/"/g, '');
-                const anio = (columnas[16] || "S/F").replace(/"/g, '');
-                const disciplina = (columnas[17] || "General").replace(/"/g, '');
-                const resumen = (columnas[18] || "Sin resumen disponible").replace(/"/g, '').substring(0, 150);
+                // Extraemos los datos limpiando las comillas de Notion
+                // Los índices corresponden a: 0:Título, 7:Edificio, 2:Año, 5:Disciplina, 20:Resumen
+                const titulo = (columnas || "Sin título").replace(/"/g, '').trim();
+                const edificio = (columnas[1] || "No identificado").replace(/"/g, '').trim();
+                const anio = (columnas[2] || "S/F").replace(/"/g, '').trim();
+                const disciplina = (columnas[3] || "General").replace(/"/g, '').trim();
+                const resumen = (columnas[4] || "Sin resumen disponible").replace(/"/g, '').trim().substring(0, 150);
 
                 tr.innerHTML = `
                     <td><strong>${titulo}</strong></td>
@@ -36,16 +38,17 @@ async function cargarDatos() {
         }
     } catch (error) {
         console.error("Error:", error);
-        cuerpoTabla.innerHTML = `<tr><td colspan="5" style="color:red;">Error: ${error.message}. Asegúrese de que 'datos.csv' esté en la raíz del repositorio.</td></tr>`;
+        cuerpoTabla.innerHTML = `<tr><td colspan="5" style="color:red; padding:20px;">Error al cargar datos: ${error.message}. Verifique que el archivo se llame 'datos.csv'.</td></tr>`;
     }
 }
 
-// Buscador
+// Buscador en tiempo real
 document.getElementById('busqueda').addEventListener('keyup', function() {
     const valor = this.value.toLowerCase();
     const filas = document.querySelectorAll('#cuerpo-tabla tr');
     filas.forEach(fila => {
-        fila.style.display = fila.innerText.toLowerCase().includes(valor) ? '' : 'none';
+        const texto = fila.innerText.toLowerCase();
+        fila.style.display = texto.includes(valor) ? '' : 'none';
     });
 });
 
