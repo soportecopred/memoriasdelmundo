@@ -3,59 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UNESCO - Propuesta de Salvaguarda CUC</title>
+    <title>Propuesta UNESCO - Salvaguarda Documental CUC</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- ÁREA DE LOGOS INSTITUCIONALES -->
+    <!-- BARRA DE LOGOS SUPERIOR -->
     <div class="logo-bar">
         <div class="container logo-grid">
-            <div class="logo-placeholder"><img src="logo-copred.png" alt="COPRED"></div>
-            <div class="logo-placeholder"><img src="logo-ucv.png" alt="UCV"></div>
-            <div class="logo-placeholder"><img src="logo-unesco.png" alt="UNESCO"></div>
-            <div class="logo-placeholder"><img src="logo-cuc.png" alt="Patrimonio Mundial"></div>
+            <div class="logo-item"><img src="logo-copred.png" alt="COPRED"></div>
+            <div class="logo-item"><img src="logo-ucv.png" alt="UCV"></div>
+            <div class="logo-item"><img src="logo-unesco.png" alt="UNESCO"></div>
+            <div class="logo-item"><img src="logo-cuc.png" alt="Patrimonio Mundial"></div>
         </div>
     </div>
 
     <header>
-        <div class="container header-content">
-            <div class="main-titles">
+        <div class="container">
+            <div class="header-main">
                 <h1>Plan de Gestión Integral para la Conservación y Acceso al Patrimonio Documental de la CUC</h1>
-                <p>Fondo Documental Instituto Ciudad Universitaria (ICU) 1943 - 1975</p>
+                <p class="icu-subtitle">Fondo Documental Instituto Ciudad Universitaria (ICU) 1943 - 1975</p>
+                
+                <!-- ENLACES TÉCNICOS DEBAJO DEL SUBTÍTULO -->
+                <div class="docs-nav">
+                    <span class="nav-label">Planes Oficiales:</span>
+                    <div class="doc-group">
+                        <strong>Conservación:</strong> 
+                        <a href="https://docs.google.com/viewer?url=https://soportecopred.github.io/memoriasdelmundo/Plan_de_Conservacion.docx&embedded=true" target="_blank">ES 🇪🇸</a> | 
+                        <a href="https://docs.google.com/viewer?url=https://soportecopred.github.io/memoriasdelmundo/Plan_de_Conservacion_Ingles.docx&embedded=true" target="_blank">EN 🇺🇸</a>
+                    </div>
+                    <div class="doc-group">
+                        <strong>Preservación:</strong> 
+                        <a href="https://docs.google.com/viewer?url=https://soportecopred.github.io/memoriasdelmundo/Plan_de_Preservacion.docx&embedded=true" target="_blank">ES 🇪🇸</a> | 
+                        <a href="https://docs.google.com/viewer?url=https://soportecopred.github.io/memoriasdelmundo/Plan_de_Preservacion_Ingles.docx&embedded=true" target="_blank">EN 🇺🇸</a>
+                    </div>
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#coleccion">El Acervo</a></li>
-                    <li class="dropdown">
-                        <a href="javascript:void(0)" class="dropbtn">Documentos Técnicos ▼</a>
-                        <div class="dropdown-content">
-                            <span class="drop-header">Plan de Conservación</span>
-                            <a href="Plan_de_Conservacion.docx" target="_blank">Español 🇪🇸</a>
-                            <a href="Plan_de_Conservacion_Ingles.docx" target="_blank">English 🇺🇸</a>
-                            <hr>
-                            <span class="drop-header">Plan de Preservación</span>
-                            <a href="Plan_de_Preservacion.docx" target="_blank">Español 🇪🇸</a>
-                            <a href="Plan_de_Preservacion_Ingles.docx" target="_blank">English 🇺🇸</a>
-                        </div>
-                    </li>
-                </ul>
-            </nav>
         </div>
     </header>
 
-    <section id="inicio" class="hero">
-        <div class="container">
-            <h2>Salvaguarda Tecnológica y Memoria del Mundo</h2>
-            <p>Instrumento científico para orientar las actividades de cuidado, mantenimiento y reconstrucción auténtica del campus, inscrito en la Lista de Patrimonio Mundial en el año 2000 [3, 4].</p>
-        </div>
-    </section>
-
-    <section id="coleccion" class="content-section">
-        <div class="container">
-            <h2>Explorar el Repositorio Maestro CUC</h2>
-            <p>Buscador analítico de planos, informes técnicos y registros administrativos del DNA arquitectónico de Villanueva [5].</p>
-            <input type="text" id="busqueda" placeholder="Buscar por código, título, edificio o año...">
+    <main class="container">
+        <section id="coleccion" class="content-section">
+            <h2>Explorar el Repositorio Maestro</h2>
+            <p>Acceso analítico al acervo documental del Patrimonio Mundial [5, 6].</p>
+            
+            <input type="text" id="busqueda" placeholder="Buscar por título, edificio, código o año...">
 
             <div class="tabla-contenedor">
                 <table>
@@ -65,18 +56,18 @@
                             <th>Título del Documento</th>
                             <th>Edificio</th>
                             <th>Año</th>
-                            <th>Acción</th>
+                            <th>Ficha</th>
                         </tr>
                     </thead>
                     <tbody id="cuerpo-tabla">
-                        <tr><td colspan="5">Sincronizando con el acervo...</td></tr>
+                        <tr><td colspan="5">Sincronizando registros...</td></tr>
                     </tbody>
                 </table>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- FICHA DINÁMICA (MODAL) -->
+    <!-- MODAL DE FICHA TÉCNICA -->
     <div id="modalFicha" class="modal">
         <div class="modal-content">
             <button class="close-btn" id="closeModal">&times;</button>
@@ -85,8 +76,8 @@
     </div>
 
     <footer>
-        <p>Consejo de Preservación y Desarrollo (COPRED) - Universidad Central de Venezuela</p>
-        <p>&copy; 2026 Ciudad Universitaria de Caracas. Patrimonio de la Humanidad.</p>
+        <p>Consejo de Preservación y Desarrollo (COPRED) - UCV</p>
+        <p>Instrumento de Salvaguarda Tecnológica | Patrimonio de la Humanidad</p>
     </footer>
 
     <script src="script.js"></script>
